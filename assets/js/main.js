@@ -15,13 +15,15 @@ function createSelect( values, labelText ){
 	var label = document.createElement('p');
 	label.innerHTML = labelText;
 	
+	//print the value that's been selected
 	select.onchange = function(){
-	    console.log('changed');
+	    response = null;
 	    var value = select.options[select.selectedIndex].value;
 	    console.log(value);
+	    //eventually, create new selects based on choice here
 	}
-	document.body.appendChild(label);
-	document.body.appendChild(select);
+	document.body.getElementById('main').appendChild(label);
+	document.body.getElementById('main').appendChild(select);
 	
 }
 
