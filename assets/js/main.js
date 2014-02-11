@@ -31,7 +31,7 @@ function createSelect( values, labelText, method ){
 			    names = response.getElementsByTagName('name');
 			    var array = new Array();
 			    //add tags to array
-			    for(var i = 0; i < 5; i++){
+			    for(var i = 0; i < 10; i++){
 			      array.push( names[i].innerHTML );
 			    }
 			    //create a Select menu based on the array
@@ -41,6 +41,10 @@ function createSelect( values, labelText, method ){
 	document.getElementById('main').appendChild(label);
 	document.getElementById('main').appendChild(select);
 	
+}
+
+function createList(){
+    
 }
 
 //basic ajax GET call
