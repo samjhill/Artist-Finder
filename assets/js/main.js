@@ -19,7 +19,7 @@ function createSelect( values ){
 //basic ajax GET call
 function ajaxGet( url ){
 	var xmlhttp;
-	var response;
+	var response = 'nothing yet';
 	
 	if (window.XMLHttpRequest) {
 	    // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -33,7 +33,7 @@ function ajaxGet( url ){
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		  {
 		    response = xmlhttp.responseXML;
-		    console.log( response );
+		    //console.log( response );
 		    return response;
 		  }
 		else{ return 'failed'; }
