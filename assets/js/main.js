@@ -12,12 +12,7 @@ function createSelect( values ){
 		option.text = values[i];
 		select.appendChild( option );
 	}
-	return select;
-}
-
-function parseByTagName(xml, name){
-    var tagNames = xml.getElementsById( name );
-    return tagNames;
+	document.body.appendChild(select);
 }
 
 //basic ajax GET call
@@ -37,6 +32,7 @@ function ajaxGet( url ){
 		  {
 		    response = xmlhttp.responseXML;
 		    //console.log( response );
+		    createSelect(response.getElementsByTagName('name'));
 		    return response;
 		  }
 		else{ return 'failed'; }
