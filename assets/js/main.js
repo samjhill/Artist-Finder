@@ -23,7 +23,7 @@ function createSelect( values, labelText, method ){
 	    response = null;
 	    var value = select.options[select.selectedIndex].value;
 	    console.log(value);
-	    ajaxGet(rootURL +  '?method='+ method + '&api_key=' + api_key);
+	    ajaxGet(rootURL +  '?method='+ method + '&' + labelText + '=' + value + '&api_key=' + api_key);
 	    
 	    //wait for ajax call to finish
 		setTimeout(function(){
@@ -35,7 +35,7 @@ function createSelect( values, labelText, method ){
 			      array.push( names[i].innerHTML );
 			    }
 			    //create a Select menu based on the array
-			    createSelect( array, 'Style', 'tag.gettoptracks' );
+			    createSelect( array, 'Style', 'artist.gettoptracks' );
 			    }, 1500);
 	}
 	document.getElementById('main').appendChild(label);
