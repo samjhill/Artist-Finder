@@ -1,6 +1,6 @@
 console.log("main.js loaded");
 var response = null;
-	
+
 // create a select element with given values.
 // values is an array
 function createSelect( values ){
