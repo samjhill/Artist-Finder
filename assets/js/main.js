@@ -14,8 +14,14 @@ function createSelect( values, labelText ){
 	}
 	var label = document.createElement('p');
 	label.innerHTML = labelText;
+	
+	select.onchange = function(){
+	    console.log('changed');
+	    console.log(select);
+	}
 	document.body.appendChild(label);
 	document.body.appendChild(select);
+	
 }
 
 //basic ajax GET call
