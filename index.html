@@ -25,7 +25,8 @@
 		ajaxGet( rootURL +  '?method=tag.getTopTags&api_key=' + api_key );
 		setTimeout(function(){
 			    tagNames = response.getElementsByTagName('name');
-			    createSelect(new Array(tagNames[0],tagNames[1],tagNames[2]));
+			    var tagArray = new Array(tagNames[0].innerHTML);
+			    createSelect( tagArray );
 			    }, 2000);
 		// traverse through XML, get all the tag names
 		
