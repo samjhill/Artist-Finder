@@ -1,5 +1,5 @@
 console.log("main.js loaded");
-	
+var response = null;
 	
 // create a select element with given values.
 // values is an array
@@ -18,7 +18,6 @@ function createSelect( values ){
 //basic ajax GET call
 function ajaxGet( url ){
 	var xmlhttp;
-	var response = 'nothing yet';
 	
 	if (window.XMLHttpRequest) {
 	    // code for IE7+, Firefox, Chrome, Opera, Safari
