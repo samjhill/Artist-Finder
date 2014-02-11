@@ -3,7 +3,7 @@ var response = null;
 
 // create a select element with given values.
 // values is an array
-function createSelect( values ){
+function createSelect( values, labelText ){
 	var select = document.createElement( 'select' );
 	
 	for( var i = 0; i < values.length; i++ ){
@@ -12,7 +12,10 @@ function createSelect( values ){
 		option.text = values[i];
 		select.appendChild( option );
 	}
-	document.getElementById('body').appendChild(select);
+	var label = document.createElement('p');
+	label.innerHTML( labelText );
+	document.body.appendChild(label);
+	document.body.appendChild(select);
 }
 
 //basic ajax GET call
