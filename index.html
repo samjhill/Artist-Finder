@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+ <head>
+  <meta charset="UTF-8">
+  <title>Client-side programming: Project 1</title>
+  <meta name="author" content="Samuel Hill">
+  <meta name="description" content="description here">
+  <link rel="shortcut icon" href="favicon.ico" type="img/favicon.ico">
+  <!--<link rel='stylesheet' href='//fonts.googleapis.com/css?family=font1|font2|etc' type='text/css'> -->
+  <link rel="stylesheet" href="assets/css/main.css" type="text/css">
+ </head>
+ <body>
+  
+  <script type="text/javascript">
+   function autorun()
+   {
+		var api_key = 'f63ef15c14a30593c4dabb929a422329';
+		var url = 'http://www.last.fm/api/auth/?api_key=';
+		
+		// authenticate
+		get( url + api_key );
+		
+		// get list of top tags
+		var select = createSelect( get( url +  '/2.0/?method=tag.getTopTags&api_key=' + api_key ));
+		console.log( select );
+		document.body.appendChild( select );
+   }
+   if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
+   else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
+   else window.onload = autorun;
+  </script>
+  
+  <script type="text/javascript" src="assets/js/main.js"></script>
+ </body>
+</html>
