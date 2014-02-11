@@ -30,14 +30,14 @@ function ajaxGet( url ){
 	    {
 	    if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	      {
-	      document.body.innerHTML=xmlhttp.responseText;
+		var response = xmlhttp.responseText;
+		console.log( response );
+		return response;
 	      }
 	    }
 	xmlhttp.open("GET",url,true);
 	xmlhttp.send();
-	var response = xmlhttp.responseText;
-	console.log( response );
-	return response;
+	
 }
 
 //basic ajax POST call
