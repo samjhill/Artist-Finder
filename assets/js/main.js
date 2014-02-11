@@ -30,7 +30,7 @@ function ajaxGet( url ){
 	    {
 	    if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	      {
-		var response = xmlhttp.responseText;
+		var response = xmlhttp.responseXML;
 		console.log( response );
 		return response;
 	      }
