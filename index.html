@@ -9,7 +9,7 @@
   <meta name="author" content="Samuel Hill">
   <meta name="description" content="description here">
   <link rel="shortcut icon" href="favicon.ico" type="img/favicon.ico">
-  <!--<link rel='stylesheet' href='//fonts.googleapis.com/css?family=font1|font2|etc' type='text/css'> -->
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=font1|font2|etc' type='text/css'>
   <link rel="stylesheet" href="assets/css/main.css" type="text/css">
  </head>
  <body>
@@ -18,13 +18,13 @@
    function autorun()
    {
 		var api_key = 'f63ef15c14a30593c4dabb929a422329';
-		var url = 'http://www.last.fm/api/auth/?api_key=';
-		
+		var authURL = 'http://www.last.fm/api/auth/?api_key=';
+		var rootURL = 'http://ws.audioscrobbler.com/2.0/';
 		// authenticate
 		get( url + api_key );
 		
 		// get list of top tags
-		var select = createSelect( get( url +  '/2.0/?method=tag.getTopTags&api_key=' + api_key ));
+		var select = createSelect( get( rootURL +  '?method=tag.getTopTags&format=json&api_key=' + api_key ));
 		console.log( select );
 		document.body.appendChild( select );
    }
