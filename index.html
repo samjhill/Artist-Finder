@@ -26,7 +26,10 @@
 		// get list of top tags
 		//var tags = get( rootURL +  '?method=tag.getTopTags&format=json&api_key=' + api_key );
 		var tags = ajaxGet( 'http://ws.audioscrobbler.com/2.0/?method=tag.getTopTags&api_key=f63ef15c14a30593c4dabb929a422329' );
-		console.log( tags );
+		
+		for(var i = 0; i < tags.length; i++){
+		  console.log(tags[tag][name]);
+		}
 		//var select = createSelect( tags );
 		//console.log( select );
 		//document.body.appendChild( select );
