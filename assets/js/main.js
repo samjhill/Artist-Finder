@@ -24,7 +24,7 @@ function createSelect( values ){
 }
 
 //basic ajax GET call
-function get( url ){
+function ajaxGet( url ){
 	xmlhttp.open("GET",url,true);
 	xmlhttp.send();
 	response = xmlhttp.responseText;
@@ -33,7 +33,7 @@ function get( url ){
 }
 
 //basic ajax POST call
-function post( url, data ){
+function ajaxPost( url, data ){
 	xmlhttp.open("POST",url,true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send( data );
