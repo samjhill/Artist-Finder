@@ -28,7 +28,7 @@ function createSelect( values, labelText, method ){
 	    //wait for ajax call to finish
 		setTimeout(function(){
 			    //sort through all the tags, grab the name
-			    names = response.getElementsByTagName('name');
+			    names = response.getElementByTagName('name');
 			    var array = new Array();
 			    //add tags to array
 			    for(var i = 0; i < 10; i++){
