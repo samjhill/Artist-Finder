@@ -34,10 +34,9 @@ function ajaxGet( url ){
 		  {
 		    response = xmlhttp.responseXML;
 		    console.log( response );
+		    return response;
 		  }
-		else{response = 'request failed. Sorry!';}
-		  
-		return response;
+		else{ return 'failed'; }
 	    }
 	xmlhttp.open("GET",url,true);
 	xmlhttp.send();
