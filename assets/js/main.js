@@ -35,7 +35,7 @@ function createSelect( values, labelText, method ){
 			      array.push( names[i].innerHTML );
 			    }
 			    //create a Select menu based on the array
-			    createSelect( array, 'Style', 'artist.gettoptracks' );
+			    createSelect( array, 'artist', 'artist.gettoptracks' );
 			    }, 1500);
 	}
 	document.getElementById('main').appendChild(label);
