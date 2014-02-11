@@ -28,11 +28,11 @@ function createSelect( values, labelText, method ){
 	    //wait for ajax call to finish
 		setTimeout(function(){
 			    //sort through all the tags, grab the name
-			    names = response.getElementByTagName('name');
+			    names = response.getElementsByTagName('name');
 			    var array = new Array();
 			    //add tags to array
 			    for(var i = 0; i < 10; i++){
-			      array.push( names[i].innerHTML );
+			      array.push( names[i].innerHTML + ' - ' +  names[i+1].innerHTML);
 			    }
 			    //create a Select menu based on the array
 			    createSelect( array, 'artist', 'artist.gettoptracks' );
