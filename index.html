@@ -13,6 +13,15 @@
   <link rel="stylesheet" href="assets/css/main.css" type="text/css">
  </head>
  <body>
+  <div id="header">
+     <h1>Artist Finder</h1>
+     <h3>Finds bands you'll like based on your choices.</h3>
+  </div>
+  
+  
+  <div id="footer">
+    <p>Uses the <a href="http://www.last.fm">Last.fm</a> api. Written by <a href="http://www.samjhill.com">Sam Hill</a> 2014.</p>
+  </div>
   
   <script type="text/javascript">
    function autorun()
@@ -23,26 +32,21 @@
 		
 		// get list of top tags
 		ajaxGet( rootURL +  '?method=tag.getTopTags&api_key=' + api_key );
+		
+		//wait for ajax call to finish
 		setTimeout(function(){
+			    //sort through all the tags, grab the name
 			    tagNames = response.getElementsByTagName('name');
 			    var tagArray = new Array();
+			    //add tags to array
 			    for(var i = 0; i < 5; i++){
 			      tagArray.push( tagNames[i].innerHTML );
 			    }
+			    //create a Select menu based on the array
 			    createSelect( tagArray );
-			    }, 2000);
-		// traverse through XML, get all the tag names
+			    }, 1500);
 		
-	        
-		
-		
-		
-		//for(var i = 0; i < tags.length; i++){
-		//  console.log(tags[tag][name]);
-		//}
-		//var select = createSelect( tags );
-		//console.log( select );
-		//document.body.appendChild( select );
+	     
    }
    if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
    else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
@@ -50,5 +54,13 @@
   </script>
   
   <script type="text/javascript" src="assets/js/main.js"></script>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
  </body>
 </html>
