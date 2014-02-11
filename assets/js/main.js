@@ -13,7 +13,7 @@ function createSelect( values, labelText ){
 		select.appendChild( option );
 	}
 	var label = document.createElement('p');
-	label.innerHTML( labelText );
+	label.innerHTML = labelText;
 	document.body.appendChild(label);
 	document.body.appendChild(select);
 }
