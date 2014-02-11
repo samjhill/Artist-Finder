@@ -22,8 +22,8 @@ function createSelect( values, labelText ){
 	    console.log(value);
 	    //eventually, create new selects based on choice here
 	}
-	document.body.getElementById('main').appendChild(label);
-	document.body.getElementById('main').appendChild(select);
+	document.getElementById('main').appendChild(label);
+	document.getElementById('main').appendChild(select);
 	
 }
 
