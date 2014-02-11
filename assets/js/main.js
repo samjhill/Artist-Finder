@@ -23,7 +23,7 @@ function createSelect( values, labelText, method ){
 	    response = null;
 	    var value = select.options[select.selectedIndex].value;
 	    console.log(value);
-	    ajaxGet(rootURL +  '?method=tag.'+ method + '&api_key=' + api_key);
+	    ajaxGet(rootURL +  '?method='+ method + '&api_key=' + api_key);
 	    
 	    //wait for ajax call to finish
 		setTimeout(function(){
