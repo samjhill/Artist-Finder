@@ -1,5 +1,4 @@
 console.log("main.js loaded");
-
 	
 	
 // create a select element with given values.

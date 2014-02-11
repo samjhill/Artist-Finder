@@ -20,15 +20,20 @@
 		var api_key = 'f63ef15c14a30593c4dabb929a422329';
 		var authURL = 'http://www.last.fm/api/auth/?api_key=';
 		var rootURL = 'http://ws.audioscrobbler.com/2.0/';
-		// authenticate
-		//ajaxGet( authURL + api_key );
 		
 		// get list of top tags
 		var tags = ajaxGet( rootURL +  '?method=tag.getTopTags&api_key=' + api_key );
-		//var tags = ajaxGet( 'http://ws.audioscrobbler.com/2.0/?method=tag.getTopTags&api_key=f63ef15c14a30593c4dabb929a422329' );
-		console.log( tags );
-		var tagNames = tags.getElementsByTagName('name');
-		console.log(tagNames);
+		
+		
+		if (tagNames.length <= 1) {
+		   window.setTimeout(makeTags(tags,300));
+		}
+		
+		function makeTags( tags ){
+		   var tagNames = tags.getElementsById('name');
+		   console.log(tagNames);
+		}
+		
 		//for(var i = 0; i < tags.length; i++){
 		//  console.log(tags[tag][name]);
 		//}
