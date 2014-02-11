@@ -31,7 +31,7 @@ function ajaxGet( url ){
 	    if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	      {
 		var response = xmlhttp.responseText;
-		console.log( response );
+		response = parseXML( response );
 		return response;
 	      }
 	    }
@@ -48,4 +48,21 @@ function ajaxPost( url, data ){
 	var response = xmlhttp.responseText;
 	console.log( response );
 	return response;
+}
+
+// parse XML
+function parseXML( text ) {
+    if (window.DOMParser)
+    {
+    parser=new DOMParser();
+    xmlDoc=parser.parseFromString(text,"text/xml");
+    }
+  else // Internet Explorer
+    {
+    xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+    xmlDoc.async=false;
+    xmlDoc.loadXML(text); 
+    }
+    
+    return xmlDoc;
 }
