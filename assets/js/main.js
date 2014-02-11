@@ -17,7 +17,8 @@ function createSelect( values, labelText ){
 	
 	select.onchange = function(){
 	    console.log('changed');
-	    console.log(select);
+	    var value = select.options[select.selectedIndex].value;
+	    console.log(value);
 	}
 	document.body.appendChild(label);
 	document.body.appendChild(select);
