@@ -23,7 +23,7 @@
 		
 		// get list of top tags
 		ajaxGet( rootURL +  '?method=tag.getTopTags&api_key=' + api_key );
-		setInterval(createSelect(response.getElementsByTagName('name')), 1000);
+		setTimeout(function(){createSelect(response.getElementsByTagName('name'))}, 3000);
 		// traverse through XML, get all the tag names
 		
 	        
