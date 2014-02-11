@@ -15,6 +15,11 @@ function createSelect( values ){
 	return select;
 }
 
+function parseByTagName(xml, name){
+    var tagNames = xml.getElementsById( name );
+    return tagNames;
+}
+
 //basic ajax GET call
 function ajaxGet( url ){
 	var xmlhttp;
