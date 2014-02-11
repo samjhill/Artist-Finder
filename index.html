@@ -25,7 +25,7 @@
 		var tags = ajaxGet( rootURL +  '?method=tag.getTopTags&api_key=' + api_key );
 		
 		
-		if (tags.length <= 1) {
+		if (tags == null) {
 		   window.setTimeout(makeTags(tags,300));
 		}
 		
