@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="assets/css/main.css" type="text/css">
  </head>
  <body>
-  <div id="wrap">
    <div id="header">
       <h1>Artist Finder</h1>
       <h3>Finds music you'll like based on your choices.</h3>
@@ -27,7 +26,6 @@
    <footer id="footer">
      <p>Uses the <a href="http://www.last.fm">Last.fm</a> API. Written by <a href="http://www.samjhill.com">Sam Hill</a> 2014.</p>
    </footer>
-  </div>
   <script type="text/javascript">
    function autorun()
    {
@@ -48,7 +46,7 @@
 			      tagArray.push( tagNames[i].innerHTML );
 			    }
 			    //create a Select menu based on the array
-			    createSelect( tagArray, 'Style' );
+			    createSelect( tagArray, 'Style', 'tag.gettoptracks' );
 			    }, 1500);
 		
 	     

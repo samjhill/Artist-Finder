@@ -3,7 +3,7 @@ var response = null;
 
 // create a select element with given values.
 // values is an array
-function createSelect( values, labelText ){
+function createSelect( values, labelText, method ){
 	var select = document.createElement( 'select' );
 	
 	for( var i = 0; i < values.length; i++ ){
@@ -20,7 +20,20 @@ function createSelect( values, labelText ){
 	    response = null;
 	    var value = select.options[select.selectedIndex].value;
 	    console.log(value);
-	    //eventually, create new selects based on choice here
+	    ajaxGet(rootURL +  '?method=tag.'+ method + '&api_key=' + api_key);
+	    
+	    //wait for ajax call to finish
+		setTimeout(function(){
+			    //sort through all the tags, grab the name
+			    names = response.getElementsByTagName('name');
+			    var array = new Array();
+			    //add tags to array
+			    for(var i = 0; i < 5; i++){
+			      array.push( names[i].innerHTML );
+			    }
+			    //create a Select menu based on the array
+			    createSelect( array, 'Style', 'tag.gettoptracks' );
+			    }, 1500);
 	}
 	document.getElementById('main').appendChild(label);
 	document.getElementById('main').appendChild(select);
@@ -51,14 +64,4 @@ function ajaxGet( url ){
 	xmlhttp.open("GET",url,true);
 	xmlhttp.send();
 	
-}
-
-//basic ajax POST call
-function ajaxPost( url, data ){
-	xmlhttp.open("POST",url,true);
-	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send( data );
-	var response = xmlhttp.responseText;
-	console.log( response );
-	return response;
 }
