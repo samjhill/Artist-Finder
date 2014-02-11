@@ -24,12 +24,13 @@
 		// get list of top tags
 		var tags = ajaxGet( rootURL +  '?method=tag.getTopTags&api_key=' + api_key );
 		
-		
-		if (response == null) {
-		   window.setTimeout(makeTags(tags,1000));
-		}
+		makeTags(tags);
 		
 		function makeTags( tags ){
+		   if (response == null) {
+		     window.setTimeout(makeTags(tags,1000));
+		     return;
+		   }
 		   var tagNames = tags.getElementsById('name');
 		   console.log(tagNames);
 		}
