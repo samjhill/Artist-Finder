@@ -30,7 +30,7 @@ function ajaxGet( url ){
 	    {
 	    if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	      {
-	      document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+	      document.body.innerHTML=xmlhttp.responseText;
 	      }
 	    }
 	xmlhttp.open("GET",url,true);
