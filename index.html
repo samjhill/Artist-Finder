@@ -24,9 +24,11 @@
 		get( authURL + api_key );
 		
 		// get list of top tags
-		var select = createSelect( get( rootURL +  '?method=tag.getTopTags&format=json&api_key=' + api_key ));
-		console.log( select );
-		document.body.appendChild( select );
+		var tags = get( rootURL +  '?method=tag.getTopTags&format=json&api_key=' + api_key );
+		console.log( tags );
+		//var select = createSelect( tags );
+		//console.log( select );
+		//document.body.appendChild( select );
    }
    if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
    else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
