@@ -1,5 +1,5 @@
 console.log("main.js loaded");
- 
+
 	
 	
 // create a select element with given values.
@@ -19,6 +19,8 @@ function createSelect( values ){
 //basic ajax GET call
 function ajaxGet( url ){
 	var xmlhttp;
+	var response;
+	
 	if (window.XMLHttpRequest) {
 	    // code for IE7+, Firefox, Chrome, Opera, Safari
 	    xmlhttp = new XMLHttpRequest();
@@ -28,12 +30,12 @@ function ajaxGet( url ){
 	}
 	xmlhttp.onreadystatechange=function()
 	    {
-	    if (xmlhttp.readyState==4 && xmlhttp.status==200)
-	      {
-		var response = xmlhttp.responseXML;
-		//console.log( response );
-		return response;
-	      }
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		  {
+		    response = xmlhttp.responseXML;
+		    //console.log( response );
+		    return response;
+		  }
 	    }
 	xmlhttp.open("GET",url,true);
 	xmlhttp.send();
