@@ -12,7 +12,7 @@ function createSelect( values ){
 		option.text = values[i];
 		select.appendChild( option );
 	}
-	document.body.appendChild(select);
+	document.getElementById('body').appendChild(select);
 }
 
 //basic ajax GET call
