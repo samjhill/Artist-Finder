@@ -1,4 +1,7 @@
 console.log("main.js loaded");
+var api_key = 'f63ef15c14a30593c4dabb929a422329';
+var authURL = 'http://www.last.fm/api/auth/?api_key=';
+var rootURL = 'http://ws.audioscrobbler.com/2.0/';
 var response = null;
 
 // create a select element with given values.
