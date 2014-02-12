@@ -102,7 +102,7 @@ function ajaxParse( label, method, searchValue, tagName){
 		ajaxGet(rootURL +  '?method='+ method + searchValue + '&api_key=' + api_key);
 	}
 	    
-	var waitForAjax = setInterval(function(){timerAjax()},1000);
+	var waitForAjax = setInterval(function(){timerAjax()},500);
 
 	function timerAjax()
 	{
