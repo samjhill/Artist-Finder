@@ -30,12 +30,12 @@ function createSelect( values, labelText ){
 		//print the value that's been selected
 	    var value = newSelect.options[newSelect.selectedIndex].value;
 	    console.log(value);
-	    
+	    ajaxParse(value, 'tag.gettopartists', value, value);
 		
 	}
 	var newDiv = document.createElement( 'div' );
 	
-	newDiv.appendChild(label);
+	newDiv.appendChild(labelText);
 	newDiv.appendChild(newSelect);
 	
 	document.getElementById('main').appendChild( newDiv );
