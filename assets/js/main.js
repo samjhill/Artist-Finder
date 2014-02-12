@@ -162,7 +162,7 @@ function getArtistImage( artistName ){
 		//should result in small, med, large, x-lage, and mega 
 		for( var i = 0; i < artistImages.length; i++){
 			console.log( 'image size: ' + artistImages[i].getAttribute("size"));
-			if( artistImages[i].getAttribute("size") == "mega"){
+			if( artistImages[i].getAttribute("size") == "mega" || artistImages[i].getAttribute("size") == "extralarge"){
 				console.log('added a mega image.');
 				urlArray.push( artistImages[i].textContent );
 			}
