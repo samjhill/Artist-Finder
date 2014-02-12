@@ -122,7 +122,7 @@ function ajaxParse( label, method, searchValue, tagName){
 			//add tags to array
 			if( iteration == 0 ){
 				array.push( 'genre' );
-				for(var i = 0; i < 10; i++){
+				for(var i = 0; i < 15; i++){
 				  array.push( names[i].textContent );
 				}
 			}
