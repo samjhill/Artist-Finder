@@ -14,6 +14,7 @@ var iteration = 0;
 // @@labelText - String - label for the item
 // returns a DIV element. Inside is a select, with given values for each Option
 function createSelect( values ){
+	console.log( ' iteration 1, getting top artists for tag ' + value );
 	console.log('iteration: ' + iteration );
 	var newSelect = document.createElement( 'select' );
 	
@@ -28,7 +29,7 @@ function createSelect( values ){
 	    	ajaxParse('artist', 'tag.gettopartists', '&tag=' + value, 'name');
 		}
 		//second iteration, we want to get top tracks for selected artist
-		if( iteration == 2 ){
+		if( iteration == 1 ){
 			console.log( ' iteration 2, getting top tracks for artist ' + value );
 	    	ajaxParse('top songs', 'artist.gettoptracks', '&artist=' + value, 'name');
 		}
