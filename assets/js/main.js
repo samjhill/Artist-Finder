@@ -158,13 +158,16 @@ function getArtistImage( artistName ){
 		while( artistImageLoaded == false ){
 		var artistImages = response.getElementsByTagName( 'image' );
 		var urlArray = new Array();
-		for( var i = 0; i < artistImages.length; i++){
+		//get first five images.
+		//should result in small, med, large, x-lage, and mega 
+		for( var i = 0; i < 4; i++){
 			console.log( artistImages[i].textContent );
 			urlArray.push( artistImages[i].textContent );
 		}
 		console.log('number of artist images: ' + urlArray.length);
 		//set background to one of the images
-		setBackground( urlArray[4]);
+		//according to the output, item 4 is the Mega size image
+		setBackground( urlArray[4] );
 		artistImageLoaded = true;
 		return urlArray;
 		}
@@ -175,5 +178,6 @@ function setBackground( url ){
 	//document.body.style.backgroundImage = "url('" + url + "') no-repeat center center fixed";
 	document.body.style.backgroundImage = "url('" + url + "')";
 	document.body.style.backgroundSize = "cover";
+	response = null;
 	
 }
