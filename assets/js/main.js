@@ -160,14 +160,14 @@ function getArtistImage( artistName ){
 		var urlArray = new Array();
 		//get first five images.
 		//should result in small, med, large, x-lage, and mega 
-		for( var i = 0; i < 7; i++){
+		for( var i = 0; i < 5; i++){
 			console.log( artistImages[i].textContent );
 			urlArray.push( artistImages[i].textContent );
 		}
 		console.log('number of artist images: ' + urlArray.length);
 		//set background to one of the images
 		//according to the output, item 4 is the Mega size image
-		setBackground( urlArray[3] );
+		setBackground( urlArray[4] );
 		artistImageLoaded = true;
 		return urlArray;
 		}
