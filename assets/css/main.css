@@ -1,6 +1,15 @@
 body{
     font-family: sans-serif;
-    color: #333333;
+    color: white;
     padding: 1em;
     margin: 1em;
+	background: #333;
+}
+
+a, a:hover{
+	color: #9FF;
+}
+
+div{
+	margin-bottom: 1em;
 }
