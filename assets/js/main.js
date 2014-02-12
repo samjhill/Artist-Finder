@@ -23,7 +23,7 @@ function createSelect( values, labelText ){
 		newSelect.appendChild( option );
 	}
 	var label = document.createElement('p');
-	label.textContent = labelText;
+	label.innerHTML = labelText;
 	
 	
 	newSelect.onchange = function(){
@@ -107,7 +107,7 @@ function ajaxParse( label, method, searchValue, tagName){
 			}
 			complete = false;
 			console.log('ajaxParse array size: ' + array.length );
-			var selectDiv = createSelect( array, 'label' );
+			var selectDiv = createSelect( array, label );
 			return selectDiv;
 		}
 	}
