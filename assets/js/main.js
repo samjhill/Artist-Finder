@@ -75,18 +75,18 @@ function createList( values ){
 		
 		//create the link to the song
 		var newListItemLink = document.createElement( 'a' );
-		newListItemLink.setAttribute('href', values[i]);
+		newListItemLink.setAttribute('href', values[i+1]);
 		newListItemLink.setAttribute('target', '_blank');
-		newListItemLink.innerHTML = values[i+1];
+		newListItemLink.innerHTML = values[i];
 		
 		newListItem.appendChild( newListItemLink );
 		newList.appendChild( newListItem );
 	}
 	
 	//create a nice big label
-	//var labelH3 = document.createElement( 'h3' );
-	//labelH3.innerHTML = label;
-	//newListDiv.appendChild(labelH3);
+	var labelH3 = document.createElement( 'h3' );
+	labelH3.innerHTML = label;
+	newListDiv.appendChild(labelH3);
 	
     //house the unordered list inside its own div
     var newListDiv = document.createElement( 'div' );
