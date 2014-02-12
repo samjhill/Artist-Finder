@@ -83,13 +83,16 @@ function createList( values ){
 		newList.appendChild( newListItem );
 	}
 	
-	//create a nice big label
+	
+    //house the unordered list inside its own div
+    var newListDiv = document.createElement( 'div' );
+    
+    //create a nice big label
 	var labelH3 = document.createElement( 'h3' );
 	labelH3.innerHTML = 'top songs';
 	newListDiv.appendChild(labelH3);
 	
-    //house the unordered list inside its own div
-    var newListDiv = document.createElement( 'div' );
+	
     //add list to div
 	newListDiv.appendChild(newList);
 	
