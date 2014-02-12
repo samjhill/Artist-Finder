@@ -12,7 +12,7 @@ var iteration = 0;
 var artistImageLoaded = false;
 
 // @@values - Array - this will be used for each Option
-// @@labelText - String - label for the item
+// 
 // returns a DIV element. Inside is a select, with given values for each Option
 function createSelect( values ){
 	
@@ -60,8 +60,27 @@ function createSelect( values ){
 	
 }
 
-function createList(){
+
+// returns an Unordered List element. Inside are List Items with given values for each.
+function createList( values ){
+	
+    var newList = document.createElement( 'ul' );
     
+    for( var i = 0; i < values.length; i++ ){
+		var newListItem = document.createElement( 'li' );
+		newListItem.value = values[i];
+		newListItem.text = values[i];
+		newList.appendChild( newListItem );
+	}
+	
+    //house the unordered list inside its own div
+    var newListDiv = document.createElement( 'div' );
+    //add list to div
+	newListDiv.appendChild(newList);
+	//add div to main div
+    document.getElementById('main').appendChild( newListDiv );
+    
+    return newListDiv;
 }
 
 //basic ajax GET call
@@ -118,33 +137,40 @@ function ajaxParse( label, method, searchValue, tagName){
 			names = response.getElementsByTagName( tagName );
 			var array = new Array();
 			//make the label the first item in the array
-			//array.push( label );
 			//add tags to array
 			if( iteration == 0 ){
 				array.push( 'genre' );
 				for(var i = 0; i < 15; i++){
 				  array.push( names[i].textContent );
 				}
+				complete = false;
+				var selectDiv = createSelect( array );
+				return selectDiv;
 			}
+			
 			if( iteration == 1 ){
 				array.push( 'top artists' );
 				for(var i = 0; i < 15; i++){
 				  array.push( names[i].textContent );
 				}
-				
-				
+				complete = false;
+				var selectDiv = createSelect( array );
+				return selectDiv;
 			}
-			// if iteration is 1, we have to grab every other item, because there are artist names mixed in with track names
+			
+			// if iteration is 2, we have to grab every other item, because there are artist names mixed in with track names
 			if( iteration == 2){
 				array.push( 'top songs' );
 				for(var i = 0; i < 30; i += 2){
 			  	array.push( names[i].textContent );
 				}
+				complete = false;
+				var listDiv = createList( array );
+				return listDiv;
 			}
-			complete = false;
+			
 			//console.log('ajaxParse array size: ' + array.length );
-			var selectDiv = createSelect( array );
-			return selectDiv;
+			
 		}
 	}
 }
