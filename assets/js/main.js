@@ -158,19 +158,32 @@ function getArtistImage( artistName ){
 		while( artistImageLoaded == false ){
 		var artistImages = response.getElementsByTagName( 'image' );
 		var urlArray = new Array();
+		var containsMega = false;
+		
 		//get first five images.
 		//should result in small, med, large, x-lage, and mega 
 		for( var i = 0; i < artistImages.length; i++){
 			console.log( 'image size: ' + artistImages[i].getAttribute("size"));
+			if( artistImages[i].getAttribute("size") == "mega"){
+				containsMega = true;
+			}
 			if( artistImages[i].getAttribute("size") == "mega" || artistImages[i].getAttribute("size") == "extralarge"){
-				console.log('added a mega image.');
-				urlArray.push( artistImages[i].textContent );
+				console.log('added a ' + artistImages[i].getAttribute("size") + ' image.');
+				urlArray.push( artistImages[i]);
 			}
 		}
 		console.log('number of artist images: ' + urlArray.length);
 		//set background to one of the images
-		//according to the output, item 4 is the Mega size image
-		setBackground( urlArray[0] );
+		for( var i = 0; i < urlArray.length; i++){
+			if(containsMega == false){
+				setBackground( urlArray[0].textContent );
+			}
+			
+			if(urlArray[i].getAttribute("size") == "mega"){
+				setBackground( urlArray[i].textContent );
+			}
+				
+		}
 		artistImageLoaded = true;
 		return urlArray;
 		}
