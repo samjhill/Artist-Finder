@@ -23,19 +23,19 @@ function createSelect( values, labelText ){
 		newSelect.appendChild( option );
 	}
 	var label = document.createElement('p');
-	label.innerHTML = labelText;
+	label.textContent = labelText;
 	
 	
 	newSelect.onchange = function(){
 		//print the value that's been selected
 	    var value = newSelect.options[newSelect.selectedIndex].value;
 	    console.log(value);
-	    ajaxParse(value, 'tag.gettopartists', value, value);
+	    ajaxParse(value, 'tag.gettopartists', '&tag=' + value, value);
 		
 	}
 	var newDiv = document.createElement( 'div' );
 	
-	newDiv.appendChild(labelText);
+	newDiv.appendChild(label);
 	newDiv.appendChild(newSelect);
 	
 	document.getElementById('main').appendChild( newDiv );
