@@ -81,7 +81,7 @@ function ajaxGet( url ){
 //
 // goes out to Last.fm with a request, then returns an array of items to spec
 function ajaxParse( label, method, searchValue, tagName){
-	if( searchValue.equals('')){
+	if( searchValue == ''){
 		ajaxGet(rootURL +  '?method='+ method + '&api_key=' + api_key);
 	}
 	else{
