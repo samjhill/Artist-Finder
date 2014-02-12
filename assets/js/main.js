@@ -24,12 +24,12 @@ function createSelect( values ){
 	    console.log(value + ' selected');
 		
 		//first iteration, we want to look at top artists for the selected tag
-		if( iteration == 0 ){
+		if( iteration == 1 ){
 			console.log( ' iteration 1, getting top artists for tag ' + value );
 	    	ajaxParse('artist', 'tag.gettopartists', '&tag=' + value, 'name');
 		}
 		//second iteration, we want to get top tracks for selected artist
-		if( iteration == 1 ){
+		if( iteration == 2 ){
 			console.log( ' iteration 2, getting top tracks for artist ' + value );
 	    	ajaxParse('top songs', 'artist.gettoptracks', '&artist=' + value, 'name');
 		}
