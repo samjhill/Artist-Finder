@@ -85,7 +85,7 @@ function createList( values ){
 	
 	//create a nice big label
 	var labelH3 = document.createElement( 'h3' );
-	labelH3.innerHTML = values[0];
+	labelH3.innerHTML = 'top songs';
 	newListDiv.appendChild(labelH3);
 	
     //house the unordered list inside its own div
