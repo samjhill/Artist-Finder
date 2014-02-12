@@ -48,6 +48,7 @@ function createList(){
 
 //basic ajax GET call
 function ajaxGet( url ){
+	response = null;
 	complete = false;
 	var xmlhttp;
 	
@@ -103,7 +104,7 @@ function ajaxParse( label, method, searchValue, tagName){
 			  array.push( names[i].innerHTML );
 			}
 			complete = false;
-			console.log('ajaxParse returns: ' + array);
+			console.log('ajaxParse size: ' + array.length );
 			return array;
 		}
 	}
