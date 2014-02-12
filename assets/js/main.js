@@ -22,17 +22,18 @@ function createSelect( values, labelText ){
 	    console.log(value + ' selected');
 		
 		//first iteration, we want to look at top artists for the selected tag
-		if( iteration == 0 ){
+		if( iteration == 1 ){
 	    	ajaxParse('artist', 'tag.gettopartists', '&tag=' + value, 'name');
 		}
 		//second iteration, we want to get top tracks for selected artist
-		if( iteration == 1 ){
+		if( iteration == 2 ){
 	    	ajaxParse('top songs', 'artist.gettoptracks', '&artist=' + value, 'name');
 		}
 		
-		iteration++;
+		
 		
 	}
+	iteration++;
 	
 	//add a label for the first option
 	var labelOption = document.createElement( 'option' );
