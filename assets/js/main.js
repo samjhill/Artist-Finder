@@ -185,7 +185,7 @@ function getArtistImage( artistName ){
 					}
 				}	
 			}	
-		}
+		
 		artistImageLoaded = true;
 		return urlArray;
 		}
