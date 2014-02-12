@@ -161,7 +161,7 @@ function getArtistImage( artistName ){
 		//get first five images.
 		//should result in small, med, large, x-lage, and mega 
 		for( var i = 0; i < 5; i++){
-			console.log( 'size: ' + artistImages[i].attribute.size);
+			console.log( 'image size: ' + artistImages[i].getAttribute("size"));
 			console.log( artistImages[i].textContent );
 			urlArray.push( artistImages[i].textContent );
 		}
