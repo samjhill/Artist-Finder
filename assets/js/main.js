@@ -84,9 +84,9 @@ function createList( values ){
 	}
 	
 	//create a nice big label
-	var labelH3 = document.createElement( 'h3' );
-	labelH3.innerHTML = label;
-	newListDiv.appendChild(labelH3);
+	//var labelH3 = document.createElement( 'h3' );
+	//labelH3.innerHTML = label;
+	//newListDiv.appendChild(labelH3);
 	
     //house the unordered list inside its own div
     var newListDiv = document.createElement( 'div' );
@@ -155,8 +155,9 @@ function ajaxParse( label, method, searchValue, tagName, tagName2){
 			
 			//if tag2 exists, time to process it
 			//currently used for URLs for each song track
+			var names2;
 			if(tagName2){
-				var names2 = response.getElementsByTagName( 'url' );
+				names2 = response.getElementsByTagName( 'url' );
 			}
 			
 			var array = new Array();
