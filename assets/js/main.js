@@ -174,15 +174,17 @@ function getArtistImage( artistName ){
 		}
 		console.log('number of artist images: ' + urlArray.length);
 		//set background to one of the images
-		for( var i = 0; i < urlArray.length; i++){
-			if(containsMega == false){
-				setBackground( urlArray[0].textContent );
-			}
-			
-			if(urlArray[i].getAttribute("size") == "mega"){
-				setBackground( urlArray[i].textContent );
-			}
-				
+		
+		if(containsMega == false){
+			setBackground( urlArray[0].textContent );
+		}
+		else{	
+			for( var i = 0; i < urlArray.length; i++){
+				if(urlArray[i].getAttribute("size") == "mega"){
+					setBackground( urlArray[i].textContent );
+					}
+				}	
+			}	
 		}
 		artistImageLoaded = true;
 		return urlArray;
