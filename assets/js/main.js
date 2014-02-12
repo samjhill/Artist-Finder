@@ -160,7 +160,7 @@ function getArtistImage( artistName ){
 		var urlArray = new Array();
 		//get first five images.
 		//should result in small, med, large, x-lage, and mega 
-		for( var i = 0; i < 5; i++){
+		for( var i = 0; i < 7; i++){
 			console.log( artistImages[i].textContent );
 			urlArray.push( artistImages[i].textContent );
 		}
@@ -176,6 +176,7 @@ function getArtistImage( artistName ){
 
 function setBackground( url ){
 	//document.body.style.backgroundImage = "url('" + url + "') no-repeat center center fixed";
+	console.log('background set to ' + url);
 	document.body.style.backgroundImage = "url('" + url + "')";
 	document.body.style.backgroundSize = "cover";
 	
