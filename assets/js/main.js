@@ -172,5 +172,7 @@ function getArtistImage( artistName ){
 }
 
 function setBackground( url ){
-	document.body.style.backgroundImage = "url('" + url + "')";
+	document.body.style.backgroundImage = "url('" + url + "') no-repeat center center fixed";
+	document.body.style.backgroundSize = "cover";
+	
 }
