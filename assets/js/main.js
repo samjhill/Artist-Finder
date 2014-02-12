@@ -115,13 +115,13 @@ function ajaxParse( label, method, searchValue, tagName){
 			names = response.getElementsByTagName( tagName );
 			var array = new Array();
 			//add tags to array
-			if( iteration == 0){
+			if( iteration == 0 || iteration == 1){
 				for(var i = 0; i < 10; i++){
 				  array.push( names[i].textContent );
 				}
 			}
 			// if iteration is 1, we have to grab every other item, because there are artist names mixed in with track names
-			if( iteration == 1){
+			if( iteration == 2){
 				for(var i = 0; i < 10; i += 2){
 			  	array.push( names[i].textContent );
 				}
