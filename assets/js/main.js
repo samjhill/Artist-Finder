@@ -67,6 +67,8 @@ function createList( values ){
 	
     var newList = document.createElement( 'ul' );
     
+    var label = values.pop();
+    
     for( var i = 0; i < values.length; i = i + 2 ){
     	//create the list item	
 		var newListItem = document.createElement( 'li' );
@@ -81,10 +83,16 @@ function createList( values ){
 		newList.appendChild( newListItem );
 	}
 	
+	//create a nice big label
+	var labelH3 = document.createElement( 'h3' );
+	labelH3.innerHTML = label;
+	newListDiv.appendChild(labelH3);
+	
     //house the unordered list inside its own div
     var newListDiv = document.createElement( 'div' );
     //add list to div
 	newListDiv.appendChild(newList);
+	
 	//add div to main div
     document.getElementById('main').appendChild( newListDiv );
     
