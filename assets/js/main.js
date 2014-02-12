@@ -187,7 +187,7 @@ function ajaxParse( label, method, searchValue, tagName, tagName2){
 				array.push( 'top songs' );
 				for(var i = 0; i < 30; i += 2){
 			  	array.push( names[i].textContent );
-			  	array.push( names2[i].textContent );
+			  	if(names2){ array.push( names2[i].textContent ); }
 				}
 				complete = false;
 				var listDiv = createList( array );
