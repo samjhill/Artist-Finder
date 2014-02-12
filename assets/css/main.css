@@ -27,10 +27,6 @@ li{
 	text-shadow: 2px 3px 8px #333;
 }
 
-li a:hover{
-	rgba(255, 255, 255, 0.5);
-}
-
 #footer {   
    position:fixed;
    left: 1em;
@@ -53,4 +49,8 @@ li a:hover{
 	color: white;
 	text-decoration: none;
 	text-shadow: 2px 3px 8px #333;
+}
+
+.songItem:hover{
+	rgba(255, 255, 255, 0.5);
 }
