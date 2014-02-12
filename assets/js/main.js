@@ -160,7 +160,7 @@ function getArtistImage( artistName ){
 		var urlArray = new Array();
 		//get first five images.
 		//should result in small, med, large, x-lage, and mega 
-		for( var i = 0; i < 5; i++){
+		for( var i = 0; i < artistImages.length; i++){
 			console.log( 'image size: ' + artistImages[i].getAttribute("size"));
 			if( artistImages[i].getAttribute("size") == "mega"){
 				console.log('added a mega image.');
