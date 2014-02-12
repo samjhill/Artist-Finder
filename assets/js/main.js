@@ -80,7 +80,7 @@ function ajaxGet( url ){
 // @@searchValue - String - band, song, etc. search value
 // @@ tagName - the XML tag that surrounds the item you'd like to be returned
 //
-// goes out to Last.fm with a request, then returns an array of items to spec
+// goes out to Last.fm with a request, then returns a selectDiv
 function ajaxParse( label, method, searchValue, tagName){
 	if( searchValue == ''){
 		ajaxGet(rootURL +  '?method='+ method + '&api_key=' + api_key);
@@ -104,8 +104,9 @@ function ajaxParse( label, method, searchValue, tagName){
 			  array.push( names[i].innerHTML );
 			}
 			complete = false;
-			console.log('ajaxParse size: ' + array.length );
-			return array;
+			console.log('ajaxParse array size: ' + array.length );
+			var selectDiv = createSelect( array, 'label' );
+			return selectDiv;
 		}
 	}
 }

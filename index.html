@@ -35,8 +35,8 @@
 		var rootURL = 'http://ws.audioscrobbler.com/2.0/';
 		
 		// get list of top tags
-		var labelsArray = ajaxParse( 'tags', 'tag.getTopTags', '', 'name' );
-		var selectDiv = createSelect( labelsArray, 'tags' );
+		var selectDiv = ajaxParse( 'tags', 'tag.getTopTags', '', 'name' );
+		
 		
 		document.getElementById('main').appendChild( selectDiv );
 		
