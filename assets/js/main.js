@@ -115,7 +115,13 @@ function ajaxParse( label, method, searchValue, tagName){
 			//make the label the first item in the array
 			//array.push( label );
 			//add tags to array
-			if( iteration == 0 || iteration == 1){
+			if( iteration == 0 ){
+				array.push( 'genre' );
+				for(var i = 0; i < 10; i++){
+				  array.push( names[i].textContent );
+				}
+			}
+			if( iteration == 1 ){
 				array.push( 'artist' );
 				for(var i = 0; i < 10; i++){
 				  array.push( names[i].textContent );
