@@ -167,7 +167,7 @@ function getArtistImage( artistName ){
 		console.log('number of artist images: ' + urlArray.length);
 		//set background to one of the images
 		//according to the output, item 4 is the Mega size image
-		setBackground( urlArray[4] );
+		setBackground( urlArray[0] );
 		artistImageLoaded = true;
 		return urlArray;
 		}
@@ -178,6 +178,5 @@ function setBackground( url ){
 	//document.body.style.backgroundImage = "url('" + url + "') no-repeat center center fixed";
 	document.body.style.backgroundImage = "url('" + url + "')";
 	document.body.style.backgroundSize = "cover";
-	response = null;
 	
 }
