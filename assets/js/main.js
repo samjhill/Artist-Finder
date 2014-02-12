@@ -38,11 +38,11 @@ function createSelect( values, labelText ){
 		
 		//first iteration, we want to look at top artists for the selected tag
 		if( iteration == 0 ){
-	    	ajaxParse(value, 'tag.gettopartists', '&tag=' + value, 'name');
+	    	ajaxParse('artist', 'tag.gettopartists', '&tag=' + value, 'name');
 		}
 		//second iteration, we want to get top tracks for selected artist
 		if( iteration == 1 ){
-	    	ajaxParse(value, 'artist.gettoptracks', '&artist=' + value, 'name');
+	    	ajaxParse('top tracks', 'artist.gettoptracks', '&artist=' + value, 'name');
 		}
 		
 		iteration++;
