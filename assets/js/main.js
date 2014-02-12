@@ -103,7 +103,7 @@ function ajaxParse( label, method, searchValue, tagName){
 			var array = new Array();
 			//add tags to array
 			for(var i = 0; i < 10; i++){
-			  array.push( names[i].innerHTML );
+			  array.push( names[i].textContent );
 			}
 			complete = false;
 			console.log('ajaxParse array size: ' + array.length );
