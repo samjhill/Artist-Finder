@@ -150,7 +150,7 @@ function ajaxParse( label, method, searchValue, tagName){
 
 function getArtistImage( artistName ){
 	ajaxGet(rootURL +  '?method=artist.getinfo&artist=' + artistName + '&api_key=' + api_key);
-	var waitForAjax = setInterval(function(){waitForAjax()},500);
+	var wait = setInterval(function(){waitForAjax()},500);
 
 	function waitForAjax()
 	{
