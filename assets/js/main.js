@@ -62,13 +62,21 @@ function createSelect( values ){
 
 
 // returns an Unordered List element. Inside are List Items with given values for each.
+//@@values - Array where values[0] is the track name and values[1] is the URL
 function createList( values ){
 	
     var newList = document.createElement( 'ul' );
     
     for( var i = 0; i < values.length; i++ ){
+    	//create the list item	
 		var newListItem = document.createElement( 'li' );
-		newListItem.innerHTML = values[i];
+		
+		//create the link to the song
+		var newListItemLink = document.createElement( 'a' );
+		newListItemLink.setAttribute('href', values[i+1]);
+		newListItemLink.innerHTML = values[i];
+		
+		newListItem.appendChild( newListItemLink );
 		newList.appendChild( newListItem );
 	}
 	
