@@ -88,7 +88,7 @@ function ajaxParse( label, method, searchValue, tagName){
 	{
 		if(complete == true){
 			//sort through all the tags, grab the name
-			names = response.getElementsByTagName( tagname);
+			names = response.getElementsByTagName( tagName);
 			var array = new Array();
 			//add tags to array
 			for(var i = 0; i < 10; i++){
