@@ -32,7 +32,7 @@ function createSelect( values ){
 		//second iteration, we want to get top tracks for selected artist
 		if( iteration == 2 ){
 			console.log( ' iteration 2, getting top tracks for artist ' + value );
-	    	ajaxParse('top songs', 'artist.gettoptracks', '&artist=' + value, 'name');
+	    	ajaxParse('top songs', 'artist.gettoptracks', '&artist=' + value, 'name', 'url');
 			
 			//get array of images of artist
 			var artistImage = getArtistImage( value );
@@ -68,8 +68,6 @@ function createList( values ){
     
     for( var i = 0; i < values.length; i++ ){
 		var newListItem = document.createElement( 'li' );
-		newListItem.value = values[i];
-		newListItem.text = values[i];
 		newListItem.innerHTML = values[i];
 		newList.appendChild( newListItem );
 	}
@@ -119,7 +117,7 @@ function ajaxGet( url ){
 // @@ tagName - the XML tag that surrounds the item you'd like to be returned
 //
 // goes out to Last.fm with a request, then returns a selectDiv
-function ajaxParse( label, method, searchValue, tagName){
+function ajaxParse( label, method, searchValue, tagName, tagName2){
 	if( searchValue == ''){
 		ajaxGet(rootURL +  '?method='+ method + '&api_key=' + api_key);
 	}
@@ -136,6 +134,14 @@ function ajaxParse( label, method, searchValue, tagName){
 			//sort through all the tags, grab them by name
 			console.log('complete is now true; lets grab them by tagName');
 			names = response.getElementsByTagName( tagName );
+			
+			
+			//if tag2 exists, time to process it
+			//currently used for URLs for each song track
+			if(tagName2){
+				var names2 = response.getElementsByTagName( tagName2 );
+			}
+			
 			var array = new Array();
 			//make the label the first item in the array
 			//add tags to array
@@ -164,6 +170,7 @@ function ajaxParse( label, method, searchValue, tagName){
 				array.push( 'top songs' );
 				for(var i = 0; i < 30; i += 2){
 			  	array.push( names[i].textContent );
+			  	array.push( names2[i].textContent );
 				}
 				complete = false;
 				var listDiv = createList( array );
