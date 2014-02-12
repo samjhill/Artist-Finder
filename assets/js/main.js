@@ -63,7 +63,7 @@ function ajaxGet( url ){
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		  {
 		    response = xmlhttp.responseXML;
-		    console.log( 'response inside ajaxGet: ' + response.children );
+		    console.log( 'response inside ajaxGet: ' + response );
 			complete = true;
 		    return response;
 		  }
@@ -92,14 +92,18 @@ function ajaxParse( label, method, searchValue, tagName){
 
 	function timerAjax()
 	{
+		console.log('complete is now false, waiting...');
 		if(complete == true){
-			//sort through all the tags, grab the name
-			names = response.getElementsByTagName( tagName);
+			//sort through all the tags, grab them by name
+			console.log('complete is now true; lets grab them by tagName');
+			names = response.getElementsByTagName( tagName );
 			var array = new Array();
 			//add tags to array
 			for(var i = 0; i < 10; i++){
 			  array.push( names[i].innerHTML );
 			}
+			complete = false;
+			console.log('ajaxParse returns: ' + array);
 			return array;
 		}
 	}
