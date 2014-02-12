@@ -113,9 +113,10 @@ function ajaxParse( label, method, searchValue, tagName){
 			names = response.getElementsByTagName( tagName );
 			var array = new Array();
 			//make the label the first item in the array
-			array.push( label );
+			//array.push( label );
 			//add tags to array
 			if( iteration == 0 || iteration == 1){
+				array.push( 'artist' );
 				for(var i = 0; i < 10; i++){
 				  array.push( names[i].textContent );
 				}
