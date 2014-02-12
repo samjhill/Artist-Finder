@@ -23,11 +23,12 @@ ul{
 }
 
 li{
+	margin-bottom: .25em;
 	text-shadow: 2px 3px 8px #333;
 }
 
 #footer {   
-position:fixed;
+   position:fixed;
    left:0px;
    bottom:0px;
    height:30px;
