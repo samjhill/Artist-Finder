@@ -67,13 +67,14 @@ function createList( values ){
 	
     var newList = document.createElement( 'ul' );
     
-    for( var i = 0; i < values.length; i++ ){
+    for( var i = 0; i < values.length; i = i + 2 ){
     	//create the list item	
 		var newListItem = document.createElement( 'li' );
 		
 		//create the link to the song
 		var newListItemLink = document.createElement( 'a' );
 		newListItemLink.setAttribute('href', values[i+1]);
+		newListItemLink.setAttribute('target', '_blank');
 		newListItemLink.innerHTML = values[i];
 		
 		newListItem.appendChild( newListItemLink );
