@@ -156,7 +156,7 @@ function ajaxParse( label, method, searchValue, tagName, tagName2){
 			//if tag2 exists, time to process it
 			//currently used for URLs for each song track
 			if(tagName2){
-				var names2 = response.getElementsByTagName( tagName2 );
+				var names2 = response.getElementsByTagName( 'url' );
 			}
 			
 			var array = new Array();
