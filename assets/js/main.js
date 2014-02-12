@@ -14,7 +14,7 @@ var iteration = 0;
 // @@labelText - String - label for the item
 // returns a DIV element. Inside is a select, with given values for each Option
 function createSelect( values ){
-	iteration++;
+	
 	console.log('iteration: ' + iteration );
 	var newSelect = document.createElement( 'select' );
 	
@@ -50,7 +50,7 @@ function createSelect( values ){
 	newDiv.appendChild(newSelect);
 	
 	document.getElementById('main').appendChild( newDiv );
-	
+	iteration++;
 	
 	
 }
