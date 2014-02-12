@@ -164,7 +164,7 @@ function getArtistImage( artistName ){
 		}
 		console.log('number of artist images: ' + urlArray.length);
 		//set background to one of the images
-		setBackground( urlArray[2]);
+		setBackground( urlArray[4]);
 		artistImageLoaded = true;
 		return urlArray;
 		}
