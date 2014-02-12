@@ -8,7 +8,7 @@ var authURL = 'http://www.last.fm/api/auth/?api_key=';
 var rootURL = 'http://ws.audioscrobbler.com/2.0/';
 var response = null;
 var complete = false;
-
+var iteration = 0;
 
 // @@values - Array - this will be used for each Option
 // @@labelText - String - label for the item
@@ -35,7 +35,17 @@ function createSelect( values, labelText ){
 		//print the value that's been selected
 	    var value = newSelect.options[newSelect.selectedIndex].value;
 	    console.log(value) + ' selected';
-	    ajaxParse(value, 'tag.gettopartists', '&tag=' + value, 'name');
+		
+		//first iteration, we want to look at top artists for the selected tag
+		if( iteration == 0 ){
+	    	ajaxParse(value, 'tag.gettopartists', '&tag=' + value, 'name');
+		}
+		//second iteration, we want to get top tracks for selected artist
+		if( iteration == 1 ){
+	    	ajaxParse(value, 'artist.gettoptracks', '&artist=' + value, 'name');
+		}
+		
+		iteration++;
 		
 	}
 	var newDiv = document.createElement( 'div' );
