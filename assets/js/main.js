@@ -73,9 +73,9 @@ function createList( values ){
 		
 		//create the link to the song
 		var newListItemLink = document.createElement( 'a' );
-		newListItemLink.setAttribute('href', values[i+1]);
+		newListItemLink.setAttribute('href', values[i]);
 		newListItemLink.setAttribute('target', '_blank');
-		newListItemLink.innerHTML = values[i];
+		newListItemLink.innerHTML = values[i+1];
 		
 		newListItem.appendChild( newListItemLink );
 		newList.appendChild( newListItem );
