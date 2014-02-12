@@ -182,6 +182,8 @@ function getArtistImage( artistName ){
 			for( var i = 0; i < urlArray.length; i++){
 				if(urlArray[i].getAttribute("size") == "mega"){
 					setBackground( urlArray[i].textContent );
+					artistImageLoaded = true;
+					return urlArray;
 					}
 				}	
 			}	
