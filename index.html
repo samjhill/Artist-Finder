@@ -35,26 +35,13 @@
 		var rootURL = 'http://ws.audioscrobbler.com/2.0/';
 		
 		// get list of top tags
-		ajaxGet( rootURL +  '?method=tag.getTopTags&api_key=' + api_key );
-		// get list of top artists for that tag
-		// get a list of their top tracks
-		//commands = new Array();
-		//commands.push('tag.gettoptracks');
-		//commands.push('artist.gettoptracks');
+		var topTagsAjax = ajaxGet( rootURL +  '?method=tag.getTopTags&api_key=' + api_key );
+		var labelsArray = ajaxParse( topTagsAjax );
+		var selectDiv = createSelect( labelsArray, 'tags' );
 		
-		//wait for ajax call to finish
-		setTimeout(function(){
-			    //sort through all the tags, grab the name
-			    tagNames = response.getElementsByTagName('name');
-			    var tagArray = new Array();
-			    //add tags to array
-			    for(var i = 0; i < 10; i++){
-			      tagArray.push( tagNames[i].innerHTML );
-			    }
-			    //create a Select menu based on the array
-			    createSelect( tagArray, 'tag', 'tag.gettoptracks' );
-			    }, 1500);
+		document.getElementById('main').appendChild( selectDiv );
 		
+			    
 	     
    }
    if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);

@@ -1,3 +1,7 @@
+// @@Author Sam Hill
+// @@website http://www.samjhill.com
+
+
 console.log("main.js loaded");
 var api_key = 'f63ef15c14a30593c4dabb929a422329';
 var authURL = 'http://www.last.fm/api/auth/?api_key=';
@@ -5,46 +9,35 @@ var rootURL = 'http://ws.audioscrobbler.com/2.0/';
 var response = null;
 var complete = false;
 
-// create a select element with given values.
-// values is an array
-function createSelect( values, labelText, method ){
-	var select = document.createElement( 'select' );
+
+// @@values - Array - this will be used for each Option
+// @@labelText - String - label for the item
+// returns a DIV element. Inside is a select, with given values for each Option
+function createSelect( values, labelText ){
+	var newSelect = document.createElement( 'select' );
 	
 	for( var i = 0; i < values.length; i++ ){
 		var option = document.createElement( 'option' );
 		option.value = values[i];
 		option.text = values[i];
-		select.appendChild( option );
+		newSelect.appendChild( option );
 	}
 	var label = document.createElement('p');
 	label.innerHTML = labelText;
 	
-	//print the value that's been selected
-	select.onchange = function(){
-	    response = null;
-	    var value = select.options[select.selectedIndex].value;
+	
+	newSelect.onchange = function(){
+		//print the value that's been selected
+	    var value = newSelect.options[newSelect.selectedIndex].value;
 	    console.log(value);
-	    ajaxGet(rootURL +  '?method='+ method + '&' + labelText + '=' + value + '&api_key=' + api_key);
 	    
-		var waitForAjax = setInterval(function(){timerAjax()},1000);
-
-		function timerAjax()
-		{
-			if(complete == true){
-				//sort through all the tags, grab the name
-			    names = response.getElementsByTagName('name');
-			    var array = new Array();
-			    //add tags to array
-			    for(var i = 0; i < 10; i++){
-			      array.push( names[i].innerHTML + ' - ' +  names[i+1].innerHTML);
-			    }
-				createSelect( array, 'artist', 'artist.gettoptracks' );
-				document.getElementById('main').appendChild(label);
-				document.getElementById('main').appendChild(select);
-			}
-		}
 		
 	}
+	var newDiv = document.createElement( 'div' );
+	
+	myDiv.appendChild(label);
+	myDiv.appendChild(newSelect);
+	return newDiv;
 	
 	
 }
@@ -78,4 +71,30 @@ function ajaxGet( url ){
 	xmlhttp.open("GET",url,true);
 	xmlhttp.send();
 	
+}
+
+// @@label - String - the textual label for the item
+// @@method - String - one of the many methods for the api: http://www.last.fm/api/intro
+// @@searchValue - String - band, song, etc. search value
+// @@ tagName - the XML tag that surrounds the item you'd like to be returned
+//
+// goes out to Last.fm with a request, then returns an array of items to spec
+function ajaxParse( label, method, searchValue, tagName){
+	ajaxGet(rootURL +  '?method='+ method + '&' + labelText + '=' + searchValue + '&api_key=' + api_key);
+	    
+	var waitForAjax = setInterval(function(){timerAjax()},1000);
+
+	function timerAjax()
+	{
+		if(complete == true){
+			//sort through all the tags, grab the name
+			names = response.getElementsByTagName( tagname);
+			var array = new Array();
+			//add tags to array
+			for(var i = 0; i < 10; i++){
+			  array.push( names[i].innerHTML );
+			}
+			return array;
+		}
+	}
 }
