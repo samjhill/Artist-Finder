@@ -9,6 +9,7 @@ var rootURL = 'http://ws.audioscrobbler.com/2.0/';
 var response = null;
 var complete = false;
 var iteration = 0;
+var artistImageLoaded = false;
 
 // @@values - Array - this will be used for each Option
 // @@labelText - String - label for the item
@@ -154,6 +155,7 @@ function getArtistImage( artistName ){
 
 	function waitForAjax()
 	{
+		while( artistImageLoaded == false ){
 		var artistImages = response.getElementsByTagName( 'image' );
 		var urlArray = new Array();
 		for( var i = 0; i < artistImages.length; i++){
@@ -162,10 +164,10 @@ function getArtistImage( artistName ){
 		}
 		
 		//set background to one of the images
-		setBackground( urlArray[0]);
-		
+		setBackground( urlArray[2]);
+		artistImageLoaded = true;
 		return urlArray;
-		
+		}
 	}
 }
 
