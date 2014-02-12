@@ -48,6 +48,7 @@ function createList(){
 
 //basic ajax GET call
 function ajaxGet( url ){
+	complete = false;
 	var xmlhttp;
 	
 	if (window.XMLHttpRequest) {
