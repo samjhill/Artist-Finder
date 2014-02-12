@@ -3,6 +3,7 @@ var api_key = 'f63ef15c14a30593c4dabb929a422329';
 var authURL = 'http://www.last.fm/api/auth/?api_key=';
 var rootURL = 'http://ws.audioscrobbler.com/2.0/';
 var response = null;
+var complete = false;
 
 // create a select element with given values.
 // values is an array
@@ -25,21 +26,26 @@ function createSelect( values, labelText, method ){
 	    console.log(value);
 	    ajaxGet(rootURL +  '?method='+ method + '&' + labelText + '=' + value + '&api_key=' + api_key);
 	    
-	    //wait for ajax call to finish
-		setTimeout(function(){
-			    //sort through all the tags, grab the name
+		var waitForAjax = setInterval(function(){timerAjax()},1000);
+
+		function timerAjax()
+		{
+			if(complete == true){
+				//sort through all the tags, grab the name
 			    names = response.getElementsByTagName('name');
 			    var array = new Array();
 			    //add tags to array
 			    for(var i = 0; i < 10; i++){
 			      array.push( names[i].innerHTML + ' - ' +  names[i+1].innerHTML);
 			    }
-			    //create a Select menu based on the array
-			    createSelect( array, 'artist', 'artist.gettoptracks' );
-			    }, 1500);
+				createSelect( array, 'artist', 'artist.gettoptracks' );
+				document.getElementById('main').appendChild(label);
+				document.getElementById('main').appendChild(select);
+			}
+		}
+		
 	}
-	document.getElementById('main').appendChild(label);
-	document.getElementById('main').appendChild(select);
+	
 	
 }
 
@@ -64,6 +70,7 @@ function ajaxGet( url ){
 		  {
 		    response = xmlhttp.responseXML;
 		    console.log( 'response inside ajaxGet: ' + response.children );
+			complete = true;
 		    return response;
 		  }
 		else{ return 'failed'; }
