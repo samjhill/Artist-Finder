@@ -26,6 +26,12 @@ li{
 	text-shadow: 2px 3px 8px #333;
 }
 
-.wrapper{
+#wrapper{
 	background: rgba(51, 51, 51, 0.26);
+}
+
+.songItem{
+	color: white;
+	text-decoration: none;
+	text-shadow: 2px 3px 8px #333;
 }

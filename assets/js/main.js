@@ -77,6 +77,7 @@ function createList( values ){
 		var newListItemLink = document.createElement( 'a' );
 		newListItemLink.setAttribute('href', values[i+1]);
 		newListItemLink.setAttribute('target', '_blank');
+		newListItemLink.setAttribute('class', 'songItem');
 		newListItemLink.innerHTML = values[i];
 		
 		newListItem.appendChild( newListItemLink );
