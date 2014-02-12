@@ -122,7 +122,8 @@ function ajaxParse( label, method, searchValue, tagName){
 			}
 			// if iteration is 1, we have to grab every other item, because there are artist names mixed in with track names
 			if( iteration == 2){
-				for(var i = 0; i < 10; i += 2){
+				array.push( 'top songs' );
+				for(var i = 0; i < 20; i += 2){
 			  	array.push( names[i].textContent );
 				}
 			}
