@@ -20,7 +20,7 @@ function createSelect( values, labelText ){
 	var labelOption = document.createElement( 'option' );
 	labelOption.value = labelText;
 	labelOption.text = labelText;
-	newSelect.appenChild( labelOption );
+	newSelect.appendChild( labelOption );
 	
 	//fill the rest of the boxes with the set of labels
 	for( var i = 0; i < values.length; i++ ){
