@@ -67,9 +67,9 @@ function createList( values ){
 	
     var newList = document.createElement( 'ul' );
     
-    var label = values.pop();
+    var label = values[0];
     
-    for( var i = 0; i < values.length; i = i + 2 ){
+    for( var i = 1; i < values.length; i = i + 2 ){
     	//create the list item	
 		var newListItem = document.createElement( 'li' );
 		
