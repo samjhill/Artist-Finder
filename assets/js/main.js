@@ -32,6 +32,11 @@ function createSelect( values ){
 		if( iteration == 2 ){
 			console.log( ' iteration 2, getting top tracks for artist ' + value );
 	    	ajaxParse('top songs', 'artist.gettoptracks', '&artist=' + value, 'name');
+			
+			//get array of images of artist
+			var artistImage = getArtistImage( value );
+			//set background to one of the images
+			setBackground( artistImage[2]);
 		}
 		
 		
@@ -126,6 +131,8 @@ function ajaxParse( label, method, searchValue, tagName){
 				for(var i = 0; i < 10; i++){
 				  array.push( names[i].textContent );
 				}
+				
+				
 			}
 			// if iteration is 1, we have to grab every other item, because there are artist names mixed in with track names
 			if( iteration == 2){
@@ -140,4 +147,25 @@ function ajaxParse( label, method, searchValue, tagName){
 			return selectDiv;
 		}
 	}
+}
+
+function getArtistImage( artistName ){
+	ajaxGet(rootURL +  '?method=artist.getinfo&artist=' + artistName + '&api_key=' + api_key);
+	var waitForAjax = setInterval(function(){waitForAjax()},500);
+
+	function waitForAjax()
+	{
+		var artistImages = response.getElementsByTagName( 'image' );
+		var urlArray = new Array();
+		for( var i = 0; i < artistImages.length; i++){
+			console.log( artistImages[i].textContent );
+			urlArray.push( artistImages[i].textContent );
+		}
+		return urlArray;
+		
+	}
+}
+
+function setBackground( url ){
+	document.body.style.backgroundImage = "url('" + url + "')";
 }
