@@ -118,6 +118,12 @@ function ajaxParse( label, method, searchValue, tagName){
 			for(var i = 0; i < 10; i++){
 			  array.push( names[i].textContent );
 			}
+			// if iteration is 1, we have to grab every other item, because there are artist names mixed in with track names
+			if( iteration == 1){
+				for(var i = 0; i < 10; i++){
+			  	array.push( names[i].textContent );
+				}
+			}
 			complete = false;
 			//console.log('ajaxParse array size: ' + array.length );
 			var selectDiv = createSelect( array, label );
