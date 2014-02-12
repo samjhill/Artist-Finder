@@ -13,7 +13,7 @@ var iteration = 0;
 // @@values - Array - this will be used for each Option
 // @@labelText - String - label for the item
 // returns a DIV element. Inside is a select, with given values for each Option
-function createSelect( values, labelText ){
+function createSelect( values ){
 	console.log('iteration: ' + iteration );
 	var newSelect = document.createElement( 'select' );
 	
@@ -36,12 +36,6 @@ function createSelect( values, labelText ){
 		
 		
 	}
-	
-	//add a label for the first option
-	var labelOption = document.createElement( 'option' );
-	labelOption.value = labelText;
-	labelOption.text = labelText;
-	newSelect.appendChild( labelOption );
 	
 	//fill the rest of the boxes with the set of labels
 	for( var i = 0; i < values.length; i++ ){
@@ -117,6 +111,8 @@ function ajaxParse( label, method, searchValue, tagName){
 			console.log('complete is now true; lets grab them by tagName');
 			names = response.getElementsByTagName( tagName );
 			var array = new Array();
+			//make the label the first item in the array
+			array.push( label );
 			//add tags to array
 			if( iteration == 0 || iteration == 1){
 				for(var i = 0; i < 10; i++){
@@ -131,7 +127,7 @@ function ajaxParse( label, method, searchValue, tagName){
 			}
 			complete = false;
 			//console.log('ajaxParse array size: ' + array.length );
-			var selectDiv = createSelect( array, label );
+			var selectDiv = createSelect( array );
 			return selectDiv;
 		}
 	}
