@@ -35,8 +35,7 @@ function createSelect( values ){
 			
 			//get array of images of artist
 			var artistImage = getArtistImage( value );
-			//set background to one of the images
-			setBackground( artistImage[2]);
+			
 		}
 		
 		
@@ -161,6 +160,10 @@ function getArtistImage( artistName ){
 			console.log( artistImages[i].textContent );
 			urlArray.push( artistImages[i].textContent );
 		}
+		
+		//set background to one of the images
+		setBackground( urlArray[0]);
+		
 		return urlArray;
 		
 	}
