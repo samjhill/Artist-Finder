@@ -34,7 +34,7 @@ function createSelect( values, labelText ){
 	newSelect.onchange = function(){
 		//print the value that's been selected
 	    var value = newSelect.options[newSelect.selectedIndex].value;
-	    console.log(value) + ' selected';
+	    console.log(value + ' selected');
 		
 		//first iteration, we want to look at top artists for the selected tag
 		if( iteration == 0 ){
@@ -42,7 +42,7 @@ function createSelect( values, labelText ){
 		}
 		//second iteration, we want to get top tracks for selected artist
 		if( iteration == 1 ){
-	    	ajaxParse('top tracks', 'artist.gettoptracks', '&artist=' + value, 'name');
+	    	ajaxParse('top songs', 'artist.gettoptracks', '&artist=' + value, 'name');
 		}
 		
 		iteration++;
@@ -108,7 +108,7 @@ function ajaxParse( label, method, searchValue, tagName){
 
 	function timerAjax()
 	{
-		console.log('complete is now false, waiting...');
+		//console.log('complete is now false, waiting...');
 		if(complete == true){
 			//sort through all the tags, grab them by name
 			console.log('complete is now true; lets grab them by tagName');
@@ -119,7 +119,7 @@ function ajaxParse( label, method, searchValue, tagName){
 			  array.push( names[i].textContent );
 			}
 			complete = false;
-			console.log('ajaxParse array size: ' + array.length );
+			//console.log('ajaxParse array size: ' + array.length );
 			var selectDiv = createSelect( array, label );
 			return selectDiv;
 		}
