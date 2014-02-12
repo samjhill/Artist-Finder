@@ -70,6 +70,7 @@ function createList( values ){
 		var newListItem = document.createElement( 'li' );
 		newListItem.value = values[i];
 		newListItem.text = values[i];
+		newListItem.innerHTML = values[i];
 		newList.appendChild( newListItem );
 	}
 	
