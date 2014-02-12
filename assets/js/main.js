@@ -16,21 +16,6 @@ var iteration = 0;
 function createSelect( values, labelText ){
 	var newSelect = document.createElement( 'select' );
 	
-	//add a label for the first option
-	var labelOption = document.createElement( 'option' );
-	labelOption.value = labelText;
-	labelOption.text = labelText;
-	newSelect.appendChild( labelOption );
-	
-	//fill the rest of the boxes with the set of labels
-	for( var i = 0; i < values.length; i++ ){
-		var option = document.createElement( 'option' );
-		option.value = values[i];
-		option.text = values[i];
-		newSelect.appendChild( option );
-	}
-	
-	
 	newSelect.onchange = function(){
 		//print the value that's been selected
 	    var value = newSelect.options[newSelect.selectedIndex].value;
@@ -48,6 +33,21 @@ function createSelect( values, labelText ){
 		iteration++;
 		
 	}
+	
+	//add a label for the first option
+	var labelOption = document.createElement( 'option' );
+	labelOption.value = labelText;
+	labelOption.text = labelText;
+	newSelect.appendChild( labelOption );
+	
+	//fill the rest of the boxes with the set of labels
+	for( var i = 0; i < values.length; i++ ){
+		var option = document.createElement( 'option' );
+		option.value = values[i];
+		option.text = values[i];
+		newSelect.appendChild( option );
+	}
+	
 	var newDiv = document.createElement( 'div' );
 	newDiv.appendChild(newSelect);
 	
