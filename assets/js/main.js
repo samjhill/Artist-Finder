@@ -39,8 +39,6 @@ function createSelect( values, labelText ){
 		
 	}
 	var newDiv = document.createElement( 'div' );
-	
-	newDiv.appendChild(label);
 	newDiv.appendChild(newSelect);
 	
 	document.getElementById('main').appendChild( newDiv );
