@@ -30,7 +30,7 @@ function createSelect( values ){
 			div.parentNode.removeChild(div);
 			div2.parentNode.removeChild(div2);
 			reset();
-			iteration = 0;
+			iteration = 1;
 		}
 		
 		//handler for select1, the artist box
@@ -39,7 +39,7 @@ function createSelect( values ){
 			//remove divs below it
 			div.parentNode.removeChild(div);
 			reset();
-			iteration = 1;
+			iteration = 2;
 		}
 		
 		//first iteration, we want to look at top artists for the selected tag
