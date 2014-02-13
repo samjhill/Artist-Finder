@@ -23,7 +23,7 @@ function createSelect( values ){
 	    console.log(value + ' selected');
 	    
 		//handler for select0, the genre box
-		if (newSelect.getAttribute('id') == '0select' && iteration > 0){
+		if (newSelect.getAttribute('id') == '0select' && iteration > 1){
 			var div = document.getElementById('1div');
 			var div2 = document.getElementById('2div');
 			//remove divs below it
