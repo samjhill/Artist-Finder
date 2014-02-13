@@ -165,7 +165,7 @@ function ajaxParse( label, method, searchValue, tagName, tagName2){
 		ajaxGet(rootURL +  '?method='+ method + searchValue + '&api_key=' + api_key);
 	}
 	    
-	var waitForAjax = setInterval(function(){timerAjax()},500);
+	var waitForAjax = setInterval(function(){timerAjax()},1000);
 
 	function timerAjax()
 	{
