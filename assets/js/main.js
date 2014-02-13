@@ -180,7 +180,7 @@ function ajaxParse( label, method, searchValue, tagName, tagName2){
 			//currently used for URLs for each song track
 			var names2;
 			if(tagName2){
-				names2 = response.getElementsByTagName( 'url' );
+				names2 = response.getElementsByTagName( tagName2 );
 			}
 			
 			var array = new Array();
