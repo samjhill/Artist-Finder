@@ -53,8 +53,7 @@ function createSelect( values ){
 	}
 	
 	var newDiv = document.createElement( 'div' );
-	newDiv.setAttribute('id',  values[0] + "Div" );
-	console.log( newDiv.id );
+	newDiv.setAttribute('id',  iteration + "Div" );
 	newDiv.appendChild(newSelect);
 	
 	document.getElementById('main').appendChild( newDiv );
