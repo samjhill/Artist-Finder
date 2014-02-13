@@ -23,7 +23,7 @@ function createSelect( values ){
 	    console.log(value + ' selected');
 	    
 		//handler for select0, the genre box
-		if (newSelect.getAttribute('id') == '0select' && iteration == 2){
+		if (newSelect.getAttribute('id') == '0select' && iteration > 1){
 			var div = document.getElementById('1div');
 			var div2 = document.getElementById('2div');
 			//remove divs below it
@@ -33,7 +33,7 @@ function createSelect( values ){
 		}
 		
 		//handler for select1, the artist box
-		if (newSelect.getAttribute('id') == '1select' && iteration == 3){
+		if (newSelect.getAttribute('id') == '1select' && iteration > 1 ){
 			var div = document.getElementById('2div');
 			//remove divs below it
 			div.parentNode.removeChild(div);
