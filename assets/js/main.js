@@ -33,7 +33,7 @@ function createSelect( values ){
 		}
 		
 		//handler for select1, the artist box
-		if (newSelect.getAttribute('id') == '1select' && iteration > 1 ){
+		if (newSelect.getAttribute('id') == '1select' && iteration > 2 ){
 			var div = document.getElementById('2div');
 			//remove divs below it
 			div.parentNode.removeChild(div);
