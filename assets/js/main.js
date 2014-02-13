@@ -25,7 +25,7 @@ function createSelect( values ){
 	    console.log(value + ' selected');
 	    
 		//if artist and/or top songs already exist, remove them
-		if (document.getElementById('1div')){
+		if (iteration > 1 && document.getElementById('1div') && document.getElementById('2div')){
 			var div = document.getElementById('1div')
 			console.log('found 1div, removing');
 			div.parentNode.removeChild(div);
