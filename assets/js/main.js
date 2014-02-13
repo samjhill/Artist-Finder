@@ -1,8 +1,6 @@
 // @@Author Sam Hill
 // @@website http://www.samjhill.com
 
-
-console.log("main.js loaded");
 var api_key = 'f63ef15c14a30593c4dabb929a422329';
 var authURL = 'http://www.last.fm/api/auth/?api_key=';
 var rootURL = 'http://ws.audioscrobbler.com/2.0/';
@@ -35,6 +33,12 @@ function createSelect( values ){
 			setBackground('');
 			//reset iteration
 			iteration = 1;
+			//reset response
+			response = null;
+			//reset complete
+			complete = false;
+			//reset artistImageLoaded
+			artistImageLoaded = false;
 		}
 		
 		//first iteration, we want to look at top artists for the selected tag
