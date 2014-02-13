@@ -23,13 +23,13 @@ function createSelect( values ){
 	    console.log(value + ' selected');
 	    
 		//if artist and/or top songs already exist, remove them
-		if (iteration > 1 && document.getElementById('1div') && document.getElementById('2div')){
+		if (newSelect.getAttribute('id') == '1select'){
 			var div = document.getElementById('1div');
 			var div2 = document.getElementById('2div');
 			//remove divs
 			div.parentNode.removeChild(div);
 			div2.parentNode.removeChild(div2);
-			
+			reset();
 		}
 		
 		//first iteration, we want to look at top artists for the selected tag
@@ -59,7 +59,7 @@ function createSelect( values ){
 		option.text = values[i];
 		newSelect.appendChild( option );
 	}
-	
+	newSelect.setAttribute('id',  iteration + "select" );
 	var newDiv = document.createElement( 'div' );
 	newDiv.setAttribute('id',  iteration + "div" );
 	newDiv.appendChild(newSelect);
