@@ -34,7 +34,7 @@ function createSelect( values ){
 			//clear background image
 			setBackground('');
 			//reset iteration
-			iteration = 0;
+			iteration = 1;
 		}
 		
 		//first iteration, we want to look at top artists for the selected tag
