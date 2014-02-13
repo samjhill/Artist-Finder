@@ -25,8 +25,9 @@ function createSelect( values ){
 	    console.log(value + ' selected');
 	    
 		//if artist and/or top songs already exist, remove them
-		if (document.getElementById('1div')){
-			console.log('found 0div');
+		if (var 1div = document.getElementById('1div')){
+			console.log('found 1div, removing');
+			1div.parentNode.removeChild(1div);
 		}
 		
 		//first iteration, we want to look at top artists for the selected tag
@@ -232,7 +233,7 @@ function getArtistImage( artistName ){
 				containsMega = true;
 			}
 			if( artistImages[i].getAttribute("size") == "mega" || artistImages[i].getAttribute("size") == "extralarge"){
-				console.log('added a ' + artistImages[i].getAttribute("size") + ' image.');
+				//console.log('added a ' + artistImages[i].getAttribute("size") + ' image.');
 				urlArray.push( artistImages[i]);
 			}
 		}
