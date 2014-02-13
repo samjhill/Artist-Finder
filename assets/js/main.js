@@ -208,6 +208,7 @@ function ajaxParse( label, method, searchValue, tagName, tagName2){
 			
 			// if iteration is 2, we have to grab every other item, because there are artist names mixed in with track names
 			if( iteration == 2){
+				complete = false;
 				array.push( 'top songs' );
 				for(var i = 0; i < 30; i += 2){
 				if(names){
@@ -217,7 +218,7 @@ function ajaxParse( label, method, searchValue, tagName, tagName2){
 			  		array.push( names2[i].textContent );
 			  	   }
 				}
-				complete = false;
+				
 				var listDiv = createList( array );
 				return listDiv;
 			}
