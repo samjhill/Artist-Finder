@@ -26,9 +26,9 @@ function createSelect( values ){
 	    
 		//if artist and/or top songs already exist, remove them
 		if (document.getElementById('1div')){
-			var 1div = document.getElementById('1div')
+			var div = document.getElementById('1div')
 			console.log('found 1div, removing');
-			1div.parentNode.removeChild(1div);
+			div.parentNode.removeChild(div);
 		}
 		
 		//first iteration, we want to look at top artists for the selected tag
