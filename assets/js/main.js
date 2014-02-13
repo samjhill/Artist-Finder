@@ -22,23 +22,14 @@ function createSelect( values ){
 	    var value = newSelect.options[newSelect.selectedIndex].value;
 	    console.log(value + ' selected');
 	    
-		//if artist and/or top songs already exist, remove them, reset everything
+		//if artist and/or top songs already exist, remove them
 		if (iteration > 1 && document.getElementById('1div') && document.getElementById('2div')){
 			var div = document.getElementById('1div');
 			var div2 = document.getElementById('2div');
 			//remove divs
 			div.parentNode.removeChild(div);
 			div2.parentNode.removeChild(div2);
-			//clear background image
-			setBackground('');
-			//reset iteration
-			iteration = 1;
-			//reset response
-			response = null;
-			//reset complete
-			complete = false;
-			//reset artistImageLoaded
-			artistImageLoaded = false;
+			
 		}
 		
 		//first iteration, we want to look at top artists for the selected tag
@@ -212,7 +203,9 @@ function ajaxParse( label, method, searchValue, tagName, tagName2){
 				array.push( 'top songs' );
 				for(var i = 0; i < 30; i += 2){
 			  	array.push( names[i].textContent );
-			  	array.push( names2[i].textContent );
+			  	if(names2.length > 0){
+			  		array.push( names2[i].textContent );
+			  	   }
 				}
 				complete = false;
 				var listDiv = createList( array );
@@ -276,4 +269,17 @@ function setBackground( url ){
 	document.body.style.backgroundImage = "url('" + url + "')";
 	document.body.style.backgroundSize = "cover";
 	
+}
+
+function reset(){
+	//clear background image
+	setBackground('');
+	//reset iteration
+	iteration = 1;
+	//reset response
+	response = null;
+	//reset complete
+	complete = false;
+	//reset artistImageLoaded
+	artistImageLoaded = false;
 }
