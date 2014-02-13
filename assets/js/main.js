@@ -23,17 +23,22 @@ function createSelect( values ){
 		//print the value that's been selected
 	    var value = newSelect.options[newSelect.selectedIndex].value;
 	    console.log(value + ' selected');
+	    
+		//if artist and/or top songs already exist, remove them
+		if (document.body.findElementById('0div')){
+			console.log('found 0div');
+		}
 		
 		//first iteration, we want to look at top artists for the selected tag
 		if( iteration == 1 ){
-			//if artist and/or top songs already exist, remove them
+			
 			console.log( ' iteration 1, getting top artists for tag ' + value );
-	    	ajaxParse('artist', 'tag.gettopartists', '&tag=' + value, 'name');
+	    		ajaxParse('artist', 'tag.gettopartists', '&tag=' + value, 'name');
 		}
 		//second iteration, we want to get top tracks for selected artist
 		if( iteration == 2 ){
 			console.log( ' iteration 2, getting top tracks for artist ' + value );
-	    	ajaxParse('top songs', 'artist.gettoptracks', '&artist=' + value, 'name', 'url');
+	    		ajaxParse('top songs', 'artist.gettoptracks', '&artist=' + value, 'name', 'url');
 			
 			//get array of images of artist
 			var artistImage = getArtistImage( value );
