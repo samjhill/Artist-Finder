@@ -1,6 +1,8 @@
-Artist-Finder
+Artist-Finder - Branch: Pretty
 =============
 Author: Sam Hill
+
+Pretty branch includes jQuery and Bootstrap to eventually allow for Bootstrap integration. Right now, it looks like crap.
 
 Finds musicians you like, based on your choices. Lists their most popular songs, and gives you a link to Last.fm's song page.
 
@@ -13,7 +15,9 @@ Dynamically generate and destroy Select boxes that let you come to a result by c
 
 Dependencies
 ------------
-
+CDNs for these are included in index.
+*jQuery
+*Bootstrap
 
 Known Bugs
 ----------
