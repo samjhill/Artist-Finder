@@ -26,6 +26,7 @@ function createSelect( values ){
 		
 		//first iteration, we want to look at top artists for the selected tag
 		if( iteration == 1 ){
+			//if artist and/or top songs already exist, remove them
 			console.log( ' iteration 1, getting top artists for tag ' + value );
 	    	ajaxParse('artist', 'tag.gettopartists', '&tag=' + value, 'name');
 		}
@@ -52,6 +53,8 @@ function createSelect( values ){
 	}
 	
 	var newDiv = document.createElement( 'div' );
+	newDiv.setAttribute('id') = values[0];
+	console.log( newDiv.getAttribute('id'));
 	newDiv.appendChild(newSelect);
 	
 	document.getElementById('main').appendChild( newDiv );
