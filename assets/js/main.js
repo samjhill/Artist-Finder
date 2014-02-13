@@ -53,7 +53,7 @@ function createSelect( values ){
 	}
 	
 	var newDiv = document.createElement( 'div' );
-	newDiv.setAttribute('id',  iteration + "Div" );
+	newDiv.setAttribute('id',  iteration + "div" );
 	newDiv.appendChild(newSelect);
 	
 	document.getElementById('main').appendChild( newDiv );
@@ -89,6 +89,7 @@ function createList( values ){
 	
     //house the unordered list inside its own div
     var newListDiv = document.createElement( 'div' );
+    newDiv.setAttribute('id',  iteration + "div" );
     
     //create a nice big label
 	var labelH3 = document.createElement( 'h3' );
