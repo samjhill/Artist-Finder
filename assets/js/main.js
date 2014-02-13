@@ -23,12 +23,20 @@ function createSelect( values ){
 	    console.log(value + ' selected');
 	    
 		//handler for select0, the genre box
-		if (newSelect.getAttribute('id') == '0select' && iteration > 1){
+		if (newSelect.getAttribute('id') == '0select' && iteration == 2){
 			var div = document.getElementById('1div');
 			var div2 = document.getElementById('2div');
 			//remove divs below it
 			div.parentNode.removeChild(div);
 			div2.parentNode.removeChild(div2);
+			reset();
+		}
+		
+		//handler for select1, the artist box
+		if (newSelect.getAttribute('id') == '1select' && iteration == 3){
+			var div = document.getElementById('2div');
+			//remove divs below it
+			div.parentNode.removeChild(div);
 			reset();
 		}
 		
