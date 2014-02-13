@@ -24,11 +24,17 @@ function createSelect( values ){
 	    var value = newSelect.options[newSelect.selectedIndex].value;
 	    console.log(value + ' selected');
 	    
-		//if artist and/or top songs already exist, remove them
+		//if artist and/or top songs already exist, remove them, reset everything
 		if (iteration > 1 && document.getElementById('1div') && document.getElementById('2div')){
-			var div = document.getElementById('1div')
-			console.log('found 1div, removing');
+			var div = document.getElementById('1div');
+			var div2 = document.getElementById('2div');
+			//remove divs
 			div.parentNode.removeChild(div);
+			div2.parentNode.removeChild(div2);
+			//clear background image
+			setBackground('');
+			//reset iteration
+			iteration = 0;
 		}
 		
 		//first iteration, we want to look at top artists for the selected tag
