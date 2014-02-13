@@ -22,11 +22,11 @@ function createSelect( values ){
 	    var value = newSelect.options[newSelect.selectedIndex].value;
 	    console.log(value + ' selected');
 	    
-		//if artist and/or top songs already exist, remove them
-		if (newSelect.getAttribute('id') == '1select'){
+		//handler for select0, the genre box
+		if (newSelect.getAttribute('id') == '0select' && iteration > 0){
 			var div = document.getElementById('1div');
 			var div2 = document.getElementById('2div');
-			//remove divs
+			//remove divs below it
 			div.parentNode.removeChild(div);
 			div2.parentNode.removeChild(div2);
 			reset();
