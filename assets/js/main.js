@@ -21,7 +21,9 @@ function main(){
 	{
 		if( isLookUpComplete == true ){
 			//create a Select based on the tags we found
-			createSelect( tagsList );
+			var newSelect = createSelect( tagsList );
+			//append it to the body
+			document.body.appendChild(newSelect);
 		}
 	}
 }
