@@ -24,7 +24,7 @@ function get( url ){
     xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", url, false );
     xmlHttp.send( null );
-	console.log(xmlHttp.responseText);
+	//console.log(xmlHttp.responseText);
     return xmlHttp.responseText;
 	
 }
@@ -36,11 +36,12 @@ function get( url ){
 //
 // goes out to Last.fm with a request, then returns an array containing the specified information
 function ajaxParse( label, method, searchValue, tagName, tagName2){
+	var data = null;
 	if( searchValue == ''){
-		get(rootURL +  '?method='+ method + '&api_key=' + api_key);
+		data = get(rootURL +  '?method='+ method + '&api_key=' + api_key);
 	}
 	else{
-		get(rootURL +  '?method='+ method + searchValue + '&api_key=' + api_key);
+		data = get(rootURL +  '?method='+ method + searchValue + '&api_key=' + api_key);
 	}
 	    
 	var waitForAjax = setInterval(function(){timerAjax()},1000);
@@ -51,14 +52,14 @@ function ajaxParse( label, method, searchValue, tagName, tagName2){
 		if(complete == true){
 			//sort through all the tags, grab them by name
 			console.log('complete is now true; lets grab them by tagName');
-			names = response.getElementsByTagName( tagName );
+			names = data.getElementsByTagName( tagName );
 			
 			
 			//if tag2 exists, time to process it
 			//currently used for URLs for each song track
 			var names2;
 			if(tagName2){
-				names2 = response.getElementsByTagName( tagName2 );
+				names2 = data.getElementsByTagName( tagName2 );
 			}
 			
 			var array = new Array();
@@ -69,7 +70,7 @@ function ajaxParse( label, method, searchValue, tagName, tagName2){
 				array.push( names[i].textContent );
 			}
 			complete = false;
-				
+			console.log(array);
 			return array;
 			
 		}
