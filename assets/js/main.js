@@ -13,7 +13,7 @@ var isLookUpComplete = false;
 
 function main(){
 	//first, let's find the most popular tags
-	tagsList = lookUp( 'tags', 'tag.getTopTags', '', 'name' );
+	lookUp( 'tags', 'tag.getTopTags', '', 'name' );
 	
 	var waitForLookUp = setInterval(function(){timerAjax()},1000);
 
@@ -82,10 +82,14 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 			for(var i = 0; i < 15; i++){
 				array.push( names[i].textContent );
 			}
+			
+			
+			if( label == 'tags' ){
+				tagsList = array;
+			}
+			
 			complete = false;
 			isLookUpComplete = true;
-			console.log(array);
-			tagsList = array;
 			return array;
 			
 		}
