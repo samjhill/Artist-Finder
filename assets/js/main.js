@@ -35,7 +35,7 @@ function createSelect( values ){
 		}
 		
 		//handler for select1, the artist box
-		if (newSelect.getAttribute('id') == '1select' && iteration >= 2 ){
+		if (newSelect.getAttribute('id') == '1select' && iteration > 2 ){
 			console.log('artist box changed. remove everything below it');
 			var div = document.getElementById('2div');
 			//remove divs below it
