@@ -21,11 +21,13 @@ function main(){
 	{
 		if( isLookUpComplete == true ){
 			//create a Select based on the tags we found
+			//select creation from here forward is handled inside createSelect, recursively
 			var newSelect = createSelect( tagsList );
 			//append it to the body
 			document.body.appendChild(newSelect);
 		}
 	}
+	
 }
 
 
@@ -111,6 +113,20 @@ function createSelect( values ){
 	    var value = newSelect.options[newSelect.selectedIndex].value;
 	    console.log(value + ' selected');
 		//call lookUp based on the value selected
+		lookUp( value, value + '.getTopArtists', '', 'name' );
+	
+		var waitForLookUp = setTimeout(function(){timerAjax()},2000);
+	
+		function timerAjax()
+		{
+			if( isLookUpComplete == true ){
+				//create a Select based on the tags we found
+				//select creation from here forward is handled inside createSelect, recursively
+				var newSelect = createSelect( tagsList );
+				//append it to the body
+				document.body.appendChild(newSelect);
+			}
+		}
 	}
 	
 	//create Option elements
