@@ -17,31 +17,14 @@ function main(){
 }
 
 
-//basic ajax GET call
+//basic GET call
 function get( url ){
-	response = null;
-	complete = false;
-	var xmlhttp = null;
-	
-	if (window.XMLHttpRequest) {
-	    // code for IE7+, Firefox, Chrome, Opera, Safari
-	    xmlhttp = new XMLHttpRequest();
-	} else {
-	    // code for IE6, IE5
-	    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.onreadystatechange=function()
-	    {
-		if (xmlhttp.readyState==4 && xmlhttp.status==200)
-		  {
-		    xmlhttp.open("GET",url, false);
-			xmlhttp.send( null);
-			complete = true;
-			response = xmlhttp.responseText;
-			return xmlhttp.responseText;
-		  }
-		else{ return 'failed'; }
-	    }
+	  var xmlHttp = null;
+
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
 	
 }
 
