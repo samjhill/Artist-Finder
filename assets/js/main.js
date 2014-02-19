@@ -35,7 +35,7 @@ function ajaxGet( url ){
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		  {
 		    response = xmlhttp.responseXML;
-		    //console.log( 'response inside ajaxGet: ' + response );
+		    console.log( 'response inside ajaxGet: ' + response );
 			complete = true;
 		    return response;
 		  }
@@ -64,7 +64,7 @@ function ajaxParse( label, method, searchValue, tagName, tagName2){
 
 	function timerAjax()
 	{
-		//console.log('complete is now false, waiting...');
+		console.log('complete is now false, waiting...');
 		if(complete == true){
 			//sort through all the tags, grab them by name
 			console.log('complete is now true; lets grab them by tagName');
