@@ -34,16 +34,14 @@ function get( url ){
 	    {
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		  {
-		    response = xmlhttp.responseXML;
-		    console.log( 'response inside get: ' + response );
+		    xmlhttp.open("GET",url, false);
+			xmlhttp.send( null);
 			complete = true;
-		    return response;
+			return xmlhttp.responseText;
 		  }
 		else{ return 'failed'; }
 	    }
-	xmlhttp.open("GET",url,true);
-	xmlhttp.send();
-	return response;
+	
 }
 
 // @@label - String - the textual label for the item
