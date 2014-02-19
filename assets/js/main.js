@@ -18,10 +18,10 @@ function main(){
 
 
 //basic ajax GET call
-function ajaxGet( url ){
+function get( url ){
 	response = null;
 	complete = false;
-	var xmlhttp;
+	var xmlhttp = null;
 	
 	if (window.XMLHttpRequest) {
 	    // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -35,7 +35,7 @@ function ajaxGet( url ){
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		  {
 		    response = xmlhttp.responseXML;
-		    console.log( 'response inside ajaxGet: ' + response );
+		    console.log( 'response inside get: ' + response );
 			complete = true;
 		    return response;
 		  }
@@ -43,7 +43,7 @@ function ajaxGet( url ){
 	    }
 	xmlhttp.open("GET",url,true);
 	xmlhttp.send();
-	
+	return response;
 }
 
 // @@label - String - the textual label for the item
@@ -54,17 +54,17 @@ function ajaxGet( url ){
 // goes out to Last.fm with a request, then returns an array containing the specified information
 function ajaxParse( label, method, searchValue, tagName, tagName2){
 	if( searchValue == ''){
-		ajaxGet(rootURL +  '?method='+ method + '&api_key=' + api_key);
+		get(rootURL +  '?method='+ method + '&api_key=' + api_key);
 	}
 	else{
-		ajaxGet(rootURL +  '?method='+ method + searchValue + '&api_key=' + api_key);
+		get(rootURL +  '?method='+ method + searchValue + '&api_key=' + api_key);
 	}
 	    
 	var waitForAjax = setInterval(function(){timerAjax()},1000);
 
 	function timerAjax()
 	{
-		console.log('complete is now false, waiting...');
+		//console.log('complete is now false, waiting...');
 		if(complete == true){
 			//sort through all the tags, grab them by name
 			console.log('complete is now true; lets grab them by tagName');
@@ -114,6 +114,7 @@ function createSelect( values ){
 		option.text = values[i];
 		newSelect.appendChild( option );
 	}
+	
 	newSelect.setAttribute('id',  values[0] + "-select" );
 	var newDiv = document.createElement( 'div' );
 	newDiv.setAttribute('id',  values[0] + "-div" );
