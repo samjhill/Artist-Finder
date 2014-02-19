@@ -114,7 +114,7 @@ function createSelect( values ){
 	    console.log(value + ' selected');
 		//call lookUp based on the value selected
 		if( values[0] == 'tags' ){
-			lookUp( value, 'tag.getTopArtists', '', 'name' );
+			lookUp( value, 'tag.getTopArtists', value, 'name' );
 		}
 		var waitForLookUp = setTimeout(function(){timerAjax()},2000);
 	
