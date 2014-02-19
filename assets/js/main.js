@@ -83,6 +83,7 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 			}
 			complete = false;
 			isLookUpComplete = true;
+			console.log(array);
 			return array;
 			
 		}
