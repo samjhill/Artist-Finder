@@ -24,6 +24,7 @@ function get( url ){
     xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", url, false );
     xmlHttp.send( null );
+	console.log(xmlHttp.responseText);
     return xmlHttp.responseText;
 	
 }
