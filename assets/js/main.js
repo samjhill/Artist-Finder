@@ -4,82 +4,122 @@
 var api_key = 'f63ef15c14a30593c4dabb929a422329';
 var authURL = 'http://www.last.fm/api/auth/?api_key=';
 var rootURL = 'http://ws.audioscrobbler.com/2.0/';
+
+//response and complete are used to check the AJAX calls 
 var response = null;
 var complete = false;
-var iteration = 0;
-var artistImageLoaded = false;
+
+
+function main(){
+	//first, let's find the most popular tags
+	var tagsList = ajaxParse( 'tags', 'tag.getTopTags', '', 'name' );
+	console.log( tagsList );
+}
+
+
+//basic ajax GET call
+function ajaxGet( url ){
+	response = null;
+	complete = false;
+	var xmlhttp;
+	
+	if (window.XMLHttpRequest) {
+	    // code for IE7+, Firefox, Chrome, Opera, Safari
+	    xmlhttp = new XMLHttpRequest();
+	} else {
+	    // code for IE6, IE5
+	    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	    {
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		  {
+		    response = xmlhttp.responseXML;
+		    //console.log( 'response inside ajaxGet: ' + response );
+			complete = true;
+		    return response;
+		  }
+		else{ return 'failed'; }
+	    }
+	xmlhttp.open("GET",url,true);
+	xmlhttp.send();
+	
+}
+
+// @@label - String - the textual label for the item
+// @@method - String - one of the many methods for the api: http://www.last.fm/api/intro
+// @@searchValue - String - band, song, etc. search value
+// @@tagName - the XML tag that surrounds the item you'd like to be returned
+//
+// goes out to Last.fm with a request, then returns an array containing the specified information
+function ajaxParse( label, method, searchValue, tagName, tagName2){
+	if( searchValue == ''){
+		ajaxGet(rootURL +  '?method='+ method + '&api_key=' + api_key);
+	}
+	else{
+		ajaxGet(rootURL +  '?method='+ method + searchValue + '&api_key=' + api_key);
+	}
+	    
+	var waitForAjax = setInterval(function(){timerAjax()},1000);
+
+	function timerAjax()
+	{
+		//console.log('complete is now false, waiting...');
+		if(complete == true){
+			//sort through all the tags, grab them by name
+			console.log('complete is now true; lets grab them by tagName');
+			names = response.getElementsByTagName( tagName );
+			
+			
+			//if tag2 exists, time to process it
+			//currently used for URLs for each song track
+			var names2;
+			if(tagName2){
+				names2 = response.getElementsByTagName( tagName2 );
+			}
+			
+			var array = new Array();
+			//make the label the first item in the array
+			//add tags to array
+			array.push( label );
+			for(var i = 0; i < 15; i++){
+				array.push( names[i].textContent );
+			}
+			complete = false;
+				
+			return array;
+			
+		}
+	}
+}
 
 // @@values - Array - this will be used for each Option
 // 
 // returns a DIV element. Inside is a select, with given values for each Option
 function createSelect( values ){
 	
-	console.log('iteration: ' + iteration );
+	
 	var newSelect = document.createElement( 'select' );
 	
 	newSelect.onchange = function(){
 		//print the value that's been selected
 	    var value = newSelect.options[newSelect.selectedIndex].value;
 	    console.log(value + ' selected');
-	    
-		//handler for select0, the genre box
-		if (newSelect.getAttribute('id') == '0select' && iteration >= 1){
-			console.log('genre box changed. remove everything below it');
-			var div = document.getElementById('1div');
-			var div2 = document.getElementById('2div');
-			//remove divs below it
-			div.parentNode.removeChild(div);
-			div2.parentNode.removeChild(div2);
-			reset();
-			iteration = 1;
-		}
-		
-		//handler for select1, the artist box
-		if (newSelect.getAttribute('id') == '1select' && iteration >= 2 ){
-			console.log('artist box changed. remove everything below it');
-			var div = document.getElementById('2div');
-			//remove divs below it
-			div.parentNode.removeChild(div);
-			reset();
-			iteration = 2;
-		}
-		
-		//first iteration, we want to look at top artists for the selected tag
-		if( iteration == 1 ){
-			
-			console.log( ' iteration 1, getting top artists for tag ' + value );
-	    		ajaxParse('artist', 'tag.gettopartists', '&tag=' + value, 'name');
-		}
-		//second iteration, we want to get top tracks for selected artist
-		if( iteration == 2 ){
-			console.log( ' iteration 2, getting top tracks for artist ' + value );
-	    		ajaxParse('top songs', 'artist.gettoptracks', '&artist=' + value, 'name', 'url');
-			
-			//get array of images of artist
-			var artistImage = getArtistImage( value );
-			
-		}
-		
-		
-		
 	}
 	
-	//fill the rest of the boxes with the set of labels
+	//create Option elements
 	for( var i = 0; i < values.length; i++ ){
 		var option = document.createElement( 'option' );
 		option.value = values[i];
 		option.text = values[i];
 		newSelect.appendChild( option );
 	}
-	newSelect.setAttribute('id',  iteration + "select" );
+	newSelect.setAttribute('id',  values[0] + "-select" );
 	var newDiv = document.createElement( 'div' );
-	newDiv.setAttribute('id',  iteration + "div" );
+	newDiv.setAttribute('id',  values[0] + "-div" );
 	newDiv.appendChild(newSelect);
 	
-	document.getElementById('main').appendChild( newDiv );
-	iteration++;
-	
-	
+	return newDiv;
 }
 
 
@@ -119,118 +159,8 @@ function createList( values ){
 	
     //add list to div
 	newListDiv.appendChild(newList);
-	
-	//add div to main div
-    document.getElementById('main').appendChild( newListDiv );
     
     return newListDiv;
-}
-
-//basic ajax GET call
-function ajaxGet( url ){
-	response = null;
-	complete = false;
-	var xmlhttp;
-	
-	if (window.XMLHttpRequest) {
-	    // code for IE7+, Firefox, Chrome, Opera, Safari
-	    xmlhttp = new XMLHttpRequest();
-	} else {
-	    // code for IE6, IE5
-	    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.onreadystatechange=function()
-	    {
-		if (xmlhttp.readyState==4 && xmlhttp.status==200)
-		  {
-		    response = xmlhttp.responseXML;
-		    //console.log( 'response inside ajaxGet: ' + response );
-			complete = true;
-		    return response;
-		  }
-		else{ return 'failed'; }
-	    }
-	xmlhttp.open("GET",url,true);
-	xmlhttp.send();
-	
-}
-
-// @@label - String - the textual label for the item
-// @@method - String - one of the many methods for the api: http://www.last.fm/api/intro
-// @@searchValue - String - band, song, etc. search value
-// @@ tagName - the XML tag that surrounds the item you'd like to be returned
-//
-// goes out to Last.fm with a request, then returns a selectDiv
-function ajaxParse( label, method, searchValue, tagName, tagName2){
-	if( searchValue == ''){
-		ajaxGet(rootURL +  '?method='+ method + '&api_key=' + api_key);
-	}
-	else{
-		ajaxGet(rootURL +  '?method='+ method + searchValue + '&api_key=' + api_key);
-	}
-	    
-	var waitForAjax = setInterval(function(){timerAjax()},1000);
-
-	function timerAjax()
-	{
-		//console.log('complete is now false, waiting...');
-		if(complete == true){
-			//sort through all the tags, grab them by name
-			console.log('complete is now true; lets grab them by tagName');
-			names = response.getElementsByTagName( tagName );
-			
-			
-			//if tag2 exists, time to process it
-			//currently used for URLs for each song track
-			var names2;
-			if(tagName2){
-				names2 = response.getElementsByTagName( tagName2 );
-			}
-			
-			var array = new Array();
-			//make the label the first item in the array
-			//add tags to array
-			if( iteration == 0 ){
-				array.push( 'genre' );
-				for(var i = 0; i < 15; i++){
-				  array.push( names[i].textContent );
-				}
-				complete = false;
-				var selectDiv = createSelect( array );
-				return selectDiv;
-			}
-			
-			if( iteration == 1 ){
-				array.push( 'top artists' );
-				for(var i = 0; i < 15; i++){
-				  array.push( names[i].textContent );
-				}
-				complete = false;
-				var selectDiv = createSelect( array );
-				return selectDiv;
-			}
-			
-			// if iteration is 2, we have to grab every other item, because there are artist names mixed in with track names
-			if( iteration == 2){
-				complete = false;
-				array.push( 'top songs' );
-				for(var i = 0; i < 30; i += 2){
-				if(names){
-			  		array.push( names[i].textContent );
-				   }
-			  	if(names2){
-			  		array.push( names2[i].textContent );
-			  	   }
-				}
-				
-				var listDiv = createList( array );
-				return listDiv;
-			}
-			
-			//console.log('ajaxParse array size: ' + array.length );
-			
-		}
-	}
 }
 
 function getArtistImage( artistName ){
@@ -282,15 +212,4 @@ function setBackground( url ){
 	console.log('background set to ' + url);
 	document.body.style.backgroundImage = "url('" + url + "')"; //no-repeat center center fixed";
 	document.body.className += 'bgArtistImage';
-}
-
-function reset(){
-	//clear background image
-	setBackground('');
-	//reset response
-	response = null;
-	//reset complete
-	complete = false;
-	//reset artistImageLoaded
-	artistImageLoaded = false;
 }
