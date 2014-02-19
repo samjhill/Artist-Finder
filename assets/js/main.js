@@ -24,6 +24,7 @@ function createSelect( values ){
 	    
 		//handler for select0, the genre box
 		if (newSelect.getAttribute('id') == '0select' && iteration > 1){
+			console.log('genre box changed. remove everything below it');
 			var div = document.getElementById('1div');
 			var div2 = document.getElementById('2div');
 			//remove divs below it
@@ -35,6 +36,7 @@ function createSelect( values ){
 		
 		//handler for select1, the artist box
 		if (newSelect.getAttribute('id') == '1select' && iteration > 2 ){
+			console.log('artist box changed. remove everything below it');
 			var div = document.getElementById('2div');
 			//remove divs below it
 			div.parentNode.removeChild(div);
@@ -245,7 +247,7 @@ function getArtistImage( artistName ){
 		//get first five images.
 		//should result in small, med, large, x-lage, and mega 
 		for( var i = 0; i < artistImages.length; i++){
-			console.log( 'image size: ' + artistImages[i].getAttribute("size"));
+			//console.log( 'image size: ' + artistImages[i].getAttribute("size"));
 			if( artistImages[i].getAttribute("size") == "mega"){
 				containsMega = true;
 			}
@@ -277,9 +279,8 @@ function getArtistImage( artistName ){
 }
 
 function setBackground( url ){
-	//document.body.style.backgroundImage = "url('" + url + "') no-repeat center center fixed";
 	console.log('background set to ' + url);
-	document.body.style.backgroundImage = "url('" + url + "') no-repeat center center fixed";
+	document.body.style.backgroundImage = "url('" + url + "')"; //no-repeat center center fixed";
 	document.body.className += 'bgArtistImage';
 }
 
