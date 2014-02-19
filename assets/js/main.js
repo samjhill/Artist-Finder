@@ -12,8 +12,11 @@ var complete = false;
 
 function main(){
 	//first, let's find the most popular tags
-	var tagsList = ajaxParse( 'tags', 'tag.getTopTags', '', 'name' );
-	console.log( tagsList );
+	var tagsList = lookUp( 'tags', 'tag.getTopTags', '', 'name' );
+	
+	//create a Select based on the tags we found
+	createSelect( tagsList );
+	
 }
 
 
@@ -36,7 +39,7 @@ function get( url ){
 // @@tagName - the XML tag that surrounds the item you'd like to be returned
 //
 // goes out to Last.fm with a request, then returns an array containing the specified information
-function ajaxParse( label, method, searchValue, tagName, tagName2){
+function lookUp( label, method, searchValue, tagName, tagName2){
 	var data = null;
 	if( searchValue == ''){
 		data = get(rootURL +  '?method='+ method + '&api_key=' + api_key);
@@ -71,7 +74,6 @@ function ajaxParse( label, method, searchValue, tagName, tagName2){
 				array.push( names[i].textContent );
 			}
 			complete = false;
-			console.log(array);
 			return array;
 			
 		}
@@ -90,6 +92,7 @@ function createSelect( values ){
 		//print the value that's been selected
 	    var value = newSelect.options[newSelect.selectedIndex].value;
 	    console.log(value + ' selected');
+		//call lookUp based on the value selected
 	}
 	
 	//create Option elements
