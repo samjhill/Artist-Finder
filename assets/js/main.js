@@ -279,9 +279,8 @@ function getArtistImage( artistName ){
 function setBackground( url ){
 	//document.body.style.backgroundImage = "url('" + url + "') no-repeat center center fixed";
 	console.log('background set to ' + url);
-	document.body.style.backgroundImage = "url('" + url + "')";
-	document.body.style.backgroundSize = "cover";
-	
+	document.body.style.backgroundImage = "url('" + url + "') no-repeat center center fixed";
+	document.body.className += 'bgArtistImage';
 }
 
 function reset(){
