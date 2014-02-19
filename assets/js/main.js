@@ -8,17 +8,18 @@ var rootURL = 'http://ws.audioscrobbler.com/2.0/';
 //response and complete are used to check the AJAX calls 
 var response = null;
 var complete = false;
+var tagsList = (['zero'],['one'],['two']);
 var isLookUpComplete = false;
 
 function main(){
 	//first, let's find the most popular tags
-	var tagsList = lookUp( 'tags', 'tag.getTopTags', '', 'name' );
+	tagsList = lookUp( 'tags', 'tag.getTopTags', '', 'name' );
 	
 	var waitForLookUp = setInterval(function(){timerAjax()},1000);
 
 	function timerAjax()
 	{
-		if(isLookUpComplete == true){
+		if( isLookUpComplete == true ){
 			//create a Select based on the tags we found
 			createSelect( tagsList );
 		}
