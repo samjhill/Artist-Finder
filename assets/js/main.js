@@ -8,15 +8,21 @@ var rootURL = 'http://ws.audioscrobbler.com/2.0/';
 //response and complete are used to check the AJAX calls 
 var response = null;
 var complete = false;
-
+var isLookUpComplete = false;
 
 function main(){
 	//first, let's find the most popular tags
 	var tagsList = lookUp( 'tags', 'tag.getTopTags', '', 'name' );
 	
-	//create a Select based on the tags we found
-	createSelect( tagsList );
-	
+	var waitForLookUp = setInterval(function(){timerAjax()},1000);
+
+	function timerAjax()
+	{
+		if(isLookUpComplete == true){
+			//create a Select based on the tags we found
+			createSelect( tagsList );
+		}
+	}
 }
 
 
@@ -41,6 +47,8 @@ function get( url ){
 // goes out to Last.fm with a request, then returns an array containing the specified information
 function lookUp( label, method, searchValue, tagName, tagName2){
 	var data = null;
+	isLookUpComplete = false;
+	
 	if( searchValue == ''){
 		data = get(rootURL +  '?method='+ method + '&api_key=' + api_key);
 	}
@@ -74,6 +82,7 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 				array.push( names[i].textContent );
 			}
 			complete = false;
+			isLookUpComplete = true;
 			return array;
 			
 		}
