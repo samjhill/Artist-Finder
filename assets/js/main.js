@@ -26,7 +26,7 @@ function get( url ){
     xmlHttp.send( null );
 	complete = true;
 	//console.log(xmlHttp.responseText);
-    return xmlHttp.responseText;
+    return xmlHttp.responseXML;
 	
 }
 
