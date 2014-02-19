@@ -15,17 +15,10 @@ function main(){
 	//first, let's find the most popular tags
 	lookUp( 'tags', 'tag.getTopTags', '', 'name' );
 	
-	var waitForLookUp = setInterval(function(){timerAjax()},1000);
-
-	function timerAjax()
-	{
-		if( isLookUpComplete == true ){
-			//create a Select based on the tags we found
-			var newSelect = createSelect( tagsList );
-			//append it to the body
-			document.body.appendChild(newSelect);
-		}
-	}
+	//create a Select based on the tags we found
+	var newSelect = createSelect( tagsList );
+	//append it to the body
+	document.body.appendChild(newSelect);
 }
 
 
