@@ -37,6 +37,7 @@ function get( url ){
 		    xmlhttp.open("GET",url, false);
 			xmlhttp.send( null);
 			complete = true;
+			response = xmlhttp.responseText;
 			return xmlhttp.responseText;
 		  }
 		else{ return 'failed'; }
