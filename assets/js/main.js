@@ -91,6 +91,9 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 			if( label == 'tags' ){
 				tagsList = array;
 			}
+			if( label == 'artists' ){
+				tagsList = array;
+			}
 			
 			complete = false;
 			isLookUpComplete = true;
@@ -112,9 +115,9 @@ function createSelect( values ){
 		//print the value that's been selected
 	    var value = newSelect.options[newSelect.selectedIndex].value;
 	    console.log(value + ' selected');
-		//call lookUp based on the value selected
+		//call lookUp for artists based on the value selected
 		if( values[0] == 'tags' ){
-			lookUp( value, 'tag.getTopArtists&tag=', value, 'name' );
+			lookUp( 'artists', 'tag.getTopArtists&tag=', value, 'name' );
 		}
 		var waitForLookUp = setTimeout(function(){timerAjax()},2000);
 	
