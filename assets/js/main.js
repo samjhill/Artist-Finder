@@ -25,7 +25,14 @@ function createSelect( values ){
 		//handler for select0, the genre box
 		if (newSelect.getAttribute('id') == '0select'){
 			console.log('genre box changed. remove everything below it, if exists');
-			try{
+			if(document.getElementById('1div')){
+				var div = document.getElementById('1div');
+				//remove divs below it
+				div.parentNode.removeChild(div);
+				reset();
+				iteration = 0;
+			}
+			if(document.getElementById('2div')){
 				var div = document.getElementById('1div');
 				var div2 = document.getElementById('2div');
 				//remove divs below it
@@ -33,10 +40,10 @@ function createSelect( values ){
 				div2.parentNode.removeChild(div2);
 				reset();
 				iteration = 0;
-			}
-			catch(err){
-				console.log(err);
-			}
+			}	
+				
+				
+			
 			
 		}
 		
