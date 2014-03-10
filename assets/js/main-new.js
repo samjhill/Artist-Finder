@@ -116,8 +116,29 @@ function createSelect( values ){
 			lookUp( 'artists', 'tag.getTopArtists&tag=', value, 'name' );
 		}
 		if( values[0] == 'artists' ){
+			//an artist has been selected. Let's look up their tracks
 			lookUp( 'artists', 'tag.getTopTracks&artist=', value, 'name' );
+			var waitForLookUp = setTimeout(function(){timerAjax()},2000);
+	
+			function timerAjax()
+			{
+				if( isLookUpComplete == true ){
+					//create an unordered list based on the tags we found
+					var newList = createList( tagsList );
+					
+					//set attributes
+					newSelect.setAttribute('id',  values[0] + "-select" );
+					var newListDiv = document.createElement( 'div' );
+					newListDiv.setAttribute('id',  values[0] + "-div" );
+					newListDiv.appendChild(newList);
+					//append it to the body
+					//document.body.appendChild(newList);
+					//return the div
+					return newListDiv;
+				}
+			}
 		}
+		
 		var waitForLookUp = setTimeout(function(){timerAjax()},2000);
 	
 		function timerAjax()
@@ -125,26 +146,29 @@ function createSelect( values ){
 			if( isLookUpComplete == true ){
 				//create a Select based on the tags we found
 				var newSelect = createSelect( tagsList );
+				
+				//create Option elements
+				for( var i = 0; i < values.length; i++ ){
+					var option = document.createElement( 'option' );
+					option.value = values[i];
+					option.text = values[i];
+					newSelect.appendChild( option );
+				}
+				
+				newSelect.setAttribute('id',  values[0] + "-select" );
+				var newDiv = document.createElement( 'div' );
+				newDiv.setAttribute('id',  values[0] + "-div" );
+				newDiv.appendChild(newSelect);
+				
+				
 				//append it to the body
-				document.body.appendChild(newSelect);
+				//document.body.appendChild(newSelect);
+				return newDiv;
 			}
 		}
 	}
 	
-	//create Option elements
-	for( var i = 0; i < values.length; i++ ){
-		var option = document.createElement( 'option' );
-		option.value = values[i];
-		option.text = values[i];
-		newSelect.appendChild( option );
-	}
 	
-	newSelect.setAttribute('id',  values[0] + "-select" );
-	var newDiv = document.createElement( 'div' );
-	newDiv.setAttribute('id',  values[0] + "-div" );
-	newDiv.appendChild(newSelect);
-	
-	return newDiv;
 }
 
 
