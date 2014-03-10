@@ -132,7 +132,7 @@ function createSelect( values ){
 					newListDiv.setAttribute('id',  values[0] + "-div" );
 					newListDiv.appendChild(newList);
 					//append it to the body
-					//document.body.appendChild(newList);
+					document.body.appendChild(newList);
 					//return the div
 					return newListDiv;
 				}
@@ -162,7 +162,7 @@ function createSelect( values ){
 				
 				
 				//append it to the body
-				//document.body.appendChild(newSelect);
+				document.body.appendChild(newSelect);
 				return newDiv;
 			}
 		}
