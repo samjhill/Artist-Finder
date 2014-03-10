@@ -47,7 +47,7 @@ function get( url ){
 // @@label - String - the textual label for the item
 // @@method - String - one of the many methods for the api: http://www.last.fm/api/intro
 // @@searchValue - String - band, song, etc. search value
-// @@tagName - the XML tag that surrounds the item you'd like to be returned
+// @@tagName - the XML tag that surrounds the item we'd like to be returned
 //
 // goes out to Last.fm with a request, then returns an array containing the specified information
 function lookUp( label, method, searchValue, tagName, tagName2){
@@ -119,6 +119,9 @@ function createSelect( values ){
 		//call lookUp for artists based on the value selected
 		if( values[0] == 'tags' ){
 			lookUp( 'artists', 'tag.getTopArtists&tag=', value, 'name' );
+		}
+		if( values[0] == 'artists' ){
+			lookUp( 'artists', 'tag.getTopTracks&artist=', value, 'name' );
 		}
 		var waitForLookUp = setTimeout(function(){timerAjax()},2000);
 	
