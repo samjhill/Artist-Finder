@@ -87,17 +87,11 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 				array.push( names[i].textContent );
 			}
 			
-			
-			if( label == 'tags' ){
-				tagsList = array;
-			}
-			if( label == 'artists' ){
-				tagsList = array;
-			}
+			tagsList = array;
 			
 			complete = false;
 			isLookUpComplete = true;
-			return array;
+			return tagsList;
 			
 		}
 	}
@@ -114,6 +108,7 @@ function createSelect( values ){
 	newSelect.onchange = function(){
 		//print the value that's been selected
 	    var value = newSelect.options[newSelect.selectedIndex].value;
+	    console.log(values);
 	    console.log(value + ' selected');
 		
 		//call lookUp for artists based on the value selected
@@ -129,7 +124,6 @@ function createSelect( values ){
 		{
 			if( isLookUpComplete == true ){
 				//create a Select based on the tags we found
-				//select creation from here forward is handled inside createSelect, recursively
 				var newSelect = createSelect( tagsList );
 				//append it to the body
 				document.body.appendChild(newSelect);
