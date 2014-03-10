@@ -24,7 +24,7 @@ function main(){
 			//select creation from here forward is handled inside createSelect, recursively
 			var newSelect = createSelect( tagsList );
 			//append it to the body
-			document.body.appendChild(newSelect);
+			//document.body.appendChild(newSelect);
 		}
 	}
 	
