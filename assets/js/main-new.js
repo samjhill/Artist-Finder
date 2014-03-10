@@ -20,9 +20,10 @@ function main(){
 	function timerAjax()
 	{
 		if( isLookUpComplete == true ){
+			console.log(tagsList);
 			//create a Select based on the tags we found
 			//select creation from here forward is handled inside createSelect, recursively
-			var newSelect = createSelect( tagsList );
+			//var newSelect = createSelect( tagsList );
 			//append it to the body
 			//document.body.appendChild(newSelect);
 		}
