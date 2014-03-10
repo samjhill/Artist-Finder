@@ -11,42 +11,38 @@
   <link rel="shortcut icon" href="favicon.ico" type="img/favicon.ico">
   <link href='http://fonts.googleapis.com/css?family=Fauna+One' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="assets/css/main.css" type="text/css">
+  
+  <script type="text/javascript" src="assets/js/main-alt.js">
  </head>
- <body>
-       <div id="header">
+ <body onLoad="populate()";>
+	<div id="header">
           <h1>Artist Finder</h1>
           <h3>Finds music you'll like based on your choices.</h3>
-       </div>
+    </div>
        
-       <div id="main">
-        
-       </div>
-   
-   <div id="footer">
+	<form name="music" id="form">
+		<div id="stepOne">
+			<select name="tags" id="mytags" onChange="updateartists(this.selectedIndex)"">
+				<option selected>Genre</option>
+				<option value="rock">rock</option>
+				<option value="alternative">alternative</option>
+				<option value="indie">indie</option>
+				<option value="electronic">electronic</option>
+				<option value="pop">pop</option>
+				<option value="metal">metal</option>
+				<option value="jazz">jazz</option>
+				<option value="punk">punk</option>
+			</select>
+		<div id="stepTwo">
+			<select name="artists" id="myartists" onChange="updatetracks(this.selectedIndex)""></select>
+		<div id="stepThree">
+				</div>
+			</div>
+		</div>
+	</form>
+	
+	<div id="footer">
      <p>Uses the <a href="http://www.last.fm">Last.fm</a> API. Written by <a href="http://www.samjhill.com">Sam Hill</a> 2014.</p>
-   </div>
-  <script type="text/javascript">
-   function autorun()
-   {
-		
-		var api_key = 'f63ef15c14a30593c4dabb929a422329';
-		var authURL = 'http://www.last.fm/api/auth/?api_key=';
-		var rootURL = 'http://ws.audioscrobbler.com/2.0/';
-		
-		main();
-		// get list of top tags
-		//var selectDiv = ajaxParse( 'tags', 'tag.getTopTags', '', 'name' );
-		
-		
-			    
-	     
-   }
-   if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
-   else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
-   else window.onload = autorun;
-  </script>
-  
-  <script type="text/javascript" src="assets/js/main-new.js"></script>
-  
- </body>
+    </div>
+</body>
 </html>
