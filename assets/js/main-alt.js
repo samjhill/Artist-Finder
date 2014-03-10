@@ -7,7 +7,7 @@ var artists;
 function populate() {
 	
 	tagslist		= document.music.tags;
-	artistslist		= document.music.cities;
+	artistslist		= document.music.artists;
 	trackslist 		= document.music.tracks;
 	
 	tags=new Array();
@@ -24,29 +24,28 @@ function populate() {
 	artists[5] = ["Select an Activity", "AUS 1|AUSAvalue", "AUS 2|AUSBvalue","AUS 3|AUSCvalue","AUS 4|AUSDvalue","AUS 5|AUSEvalue"];
 	
 	
-	
 	}
 	
-function updatecities(y){
-// remove existing activities select
+function updateartists(y){
+// remove existing tracks select
 var myNode1 = document.getElementById("stepThree");
 	myNode1.removeChild(myNode1.firstChild);
-	citieslist.options.length=0;
+	artistslist.options.length=0;
 	if (y>0)
 	{
-		for (i=0; i<cities[y].length; i++)
-			citieslist.options[citieslist.options.length]=new Option(cities[y][i].split("|")[0], cities[y][i].split("|")[1]);
+		for (i=0; i<artists[y].length; i++)
+			artistslist.options[artistslist.options.length]=new Option(artists[y][i].split("|")[0], artists[y][i].split("|")[1]);
 	}
 }
-function updateactivities(x){
+function updatetracks(x){
 // a dynamically created select
 var mySelect = document.createElement("SELECT");
-	mySelect.id = "selActivities";
+	mySelect.id = "seltracks";
 	mySelect.setAttribute('onChange' ,'alert(this.options[this.options.selectedIndex].text)');
 	mySelect.options[0] = new Option('— Select One —');
-	for (i=1; i<activities[x].length; i++)
+	for (i=1; i<tracks[x].length; i++)
 	{		 
-			mySelect.options[mySelect.options.length]= new Option(activities[x][i].split("|")[0], activities[x][i].split("|")[1]);
+			mySelect.options[mySelect.options.length]= new Option(tracks[x][i].split("|")[0], tracks[x][i].split("|")[1]);
 	}	
 	var myNode = document.getElementById('stepThree');
 	myNode.appendChild(mySelect);
