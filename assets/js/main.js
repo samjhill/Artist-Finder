@@ -23,7 +23,7 @@ function createSelect( values ){
 	    console.log(value + ' selected');
 	    
 		//handler for select0, the genre box
-		if (newSelect.getAttribute('id') == '0select' && iteration > 1){
+		if (newSelect.getAttribute('id') == '0select' && iteration >= 0){
 			console.log('genre box changed. remove everything below it');
 			var div = document.getElementById('1div');
 			var div2 = document.getElementById('2div');
@@ -31,17 +31,17 @@ function createSelect( values ){
 			div.parentNode.removeChild(div);
 			div2.parentNode.removeChild(div2);
 			reset();
-			iteration = 1;
+			iteration = 0;
 		}
 		
 		//handler for select1, the artist box
-		if (newSelect.getAttribute('id') == '1select' && iteration > 2 ){
+		if (newSelect.getAttribute('id') == '1select' && iteration >= 1 ){
 			console.log('artist box changed. remove everything below it');
 			var div = document.getElementById('2div');
 			//remove divs below it
 			div.parentNode.removeChild(div);
 			reset();
-			iteration = 2;
+			iteration = 1;
 		}
 		
 		//first iteration, we want to look at top artists for the selected tag
