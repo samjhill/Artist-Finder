@@ -25,6 +25,7 @@ function main(){
 			//select creation from here forward is handled inside createSelect, recursively
 			var newSelect = createSelect( tagsList );
 			console.log(newSelect);
+			
 			//append it to the body
 			document.body.appendChild(newSelect);
 		}
@@ -105,13 +106,12 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 // values[1-i] - the Options
 // returns a DIV element. Inside is a select, with given values for each Option
 function createSelect( values ){
-	
-	
 	var newSelect = document.createElement( 'select' );
 	for(var i = 0; i < values.length; i++){
 	var option = document.createElement( 'option' );
  					option.value = values[i];
  					option.text = values[i];
+					option.onChange = "reset(values[0];);"
  					newSelect.appendChild( option );
 	}
 	newSelect.setAttribute('id',  values[0] + "-select" );
@@ -213,4 +213,8 @@ function setBackground( url ){
 	console.log('background set to ' + url);
 	document.body.style.backgroundImage = "url('" + url + "')"; //no-repeat center center fixed";
 	document.body.className += 'bgArtistImage';
+}
+
+function reset( index ){
+	console.log("reset called. Index: " + index);
 }
