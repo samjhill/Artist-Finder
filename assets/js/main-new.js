@@ -24,7 +24,7 @@ function main(){
 			//create a Select based on the tags we found
 			var newSelect = createSelect( tagsList );
 			
-			newSelect.children[0].setAttribute("onchange", lookUp('tag','tag.getTopArtists', newSelect.children[0].options[newSelect.children[0].selectedIndex].text));
+			newSelect.setAttribute("onchange", "lookUp('tag','tag.getTopArtists', newSelect.options[newSelect.selectedIndex].text)");
 			console.log(newSelect);
 			
 			//append it to the body
@@ -105,7 +105,7 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 // @@values - Array - this will be used for each Option
 // values[0] - the label
 // values[1-i] - the Options
-// returns a DIV element. Inside is a select, with given values for each Option
+// returns a SELECT element with given values for each Option
 function createSelect( values ){
 	var newSelect = document.createElement( 'select' );
 	//add onChange function
@@ -116,12 +116,8 @@ function createSelect( values ){
  					newSelect.appendChild( option );
 	}
 	newSelect.setAttribute('id',  values[0] + "-select" );
- 	var newDiv = document.createElement( 'div' );
- 	newDiv.setAttribute('id',  values[0] + "-div" );
- 	newDiv.appendChild(newSelect);
-	//append it to the body
-	document.body.appendChild(newDiv);
-	return newDiv;
+ 	
+	return newSelect;
 }
 
 
