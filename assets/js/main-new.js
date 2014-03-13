@@ -24,6 +24,7 @@ function main(){
 			//create a Select based on the tags we found
 			//select creation from here forward is handled inside createSelect, recursively
 			var newSelect = createSelect( tagsList );
+			console.log(newSelect);
 			//append it to the body
 			document.body.appendChild(newSelect);
 		}
