@@ -29,7 +29,7 @@ function main(){
 			//look up the newly appended item
 			select = document.getElementById("tags-select");
 			//watch for change
-			select.onChange = function(){
+			select.onchange = function(){
 				Console.log("onChange fired");
 				lookUp('tag','tag.getTopArtists', select.options[select.selectedIndex].text, 'name');
 				var waitForLookUp = setTimeout(function(){timerAjax()},1000);
