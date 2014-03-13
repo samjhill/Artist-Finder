@@ -20,7 +20,9 @@ function main(){
 	function timerAjax()
 	{
 		if( isLookUpComplete == true ){
-			console.log(tagsList);
+			//
+			//SELECT 1
+			//
 			//create a Select based on the tags we found
 			var newSelect = createSelect( tagsList );			
 			//append it to the body
@@ -30,19 +32,36 @@ function main(){
 			select = document.getElementById("tags-select");
 			//watch for change
 			select.onchange = function(){
-				console.log("onChange fired");
-				lookUp('tag','tag.getTopArtists', select.options[select.selectedIndex].text, 'name');
+				lookUp('artist','tag.getTopArtists', select.options[select.selectedIndex].text, 'name');
 				var waitForLookUp = setTimeout(function(){timerAjax()},1000);
 
 				function timerAjax()
 				{
 					if( isLookUpComplete == true ){
-						console.log("Lookup complete.");
-						console.log(tagsList);
+						//
+						//SELECT 2
+						//
 						//create a Select based on the tags we found
 						var newSelect = createSelect( tagsList );			
 						//append it to the body
 						document.body.appendChild(newSelect);
+						//look up the newly appended item
+						select = document.getElementById("artist-select");
+						//watch for change
+						select.onchange = function(){
+							lookUp('artist','artist.getTopTracks', select.options[select.selectedIndex].text, 'name');
+							var waitForLookUp = setTimeout(function(){timerAjax()},1000);
+			
+							function timerAjax()
+							{
+								if( isLookUpComplete == true ){
+									//
+									//SELECT 3
+									//
+									var newList = createList( tagsList );
+									document.body.appendChild(newList);
+								}
+							}
 					}
 				}
 			};
