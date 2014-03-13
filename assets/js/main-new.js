@@ -10,6 +10,7 @@ var response = null;
 var complete = false;
 var tagsList = (['zero'],['one'],['two']);
 var isLookUpComplete = false;
+var artistImageLoaded = false;
 
 function main(){
 	//first, let's find the most popular tags
