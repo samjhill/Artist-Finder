@@ -134,6 +134,10 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 			array.push( label );
 			for(var i = 0; i < 15; i++){
 				array.push( names[i].textContent );
+				if (names2.length > 0) {
+					array.push( names2[i].textContent );
+				}
+				
 			}
 			tagsList = array;
 			
