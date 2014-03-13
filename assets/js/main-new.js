@@ -107,11 +107,12 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 // returns a DIV element. Inside is a select, with given values for each Option
 function createSelect( values ){
 	var newSelect = document.createElement( 'select' );
+	//add onChange function
+	newSelect.onChange = reset();
 	for(var i = 0; i < values.length; i++){
 	var option = document.createElement( 'option' );
  					option.value = values[i];
  					option.text = values[i];
-					option.onChange = "reset(values[0];);"
  					newSelect.appendChild( option );
 	}
 	newSelect.setAttribute('id',  values[0] + "-select" );
