@@ -191,7 +191,7 @@ function createList( values ){
 	
     //house the unordered list inside its own div
     var newListDiv = document.createElement( 'div' );
-    newListDiv.setAttribute('id',  iteration + "div" );
+    newListDiv.setAttribute('id',  values[0] + "div" );
     
     //create a nice big label
 	var labelH3 = document.createElement( 'h3' );
