@@ -118,7 +118,6 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 	{
 		if(complete == true){
 			//sort through all the tags, grab them by name
-			console.log('complete is now true; lets grab them by tagName');
 			names = data.getElementsByTagName( tagName );
 			
 			
@@ -168,7 +167,7 @@ function createSelect( values ){
 // returns an Unordered List element. Inside are List Items with given values for each.
 //@@values - Array where values[0] is the track name and values[1] is the URL
 function createList( values ){
-	
+	console.log('create list with values:' + values);
     var newList = document.createElement( 'ul' );
     
     
@@ -191,7 +190,7 @@ function createList( values ){
 	
     //house the unordered list inside its own div
     var newListDiv = document.createElement( 'div' );
-    newListDiv.setAttribute('id',  values[0] + "div" );
+    newListDiv.setAttribute('id', "songs-div" );
     
     //create a nice big label
 	var labelH3 = document.createElement( 'h3' );
