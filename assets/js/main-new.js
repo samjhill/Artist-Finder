@@ -35,11 +35,11 @@ function main(){
 			select.onchange = function(){
 				if(document.getElementById("artist-select")){
 					var artistSel = document.getElementById("artist-select");
-					artistSel.parent.removeChild(artistSel);
+					artistSel.parentNode.removeChild(artistSel);
 				}
 				if(document.getElementById("songs-div")){
 					var songsDiv = document.getElementById("songs-div");
-					songsDiv.parent.removeChild(artistSel);
+					songsDiv.parentNode.removeChild(artistSel);
 				}
 				
 				lookUp('artist','tag.getTopArtists&tag=', select.options[select.selectedIndex].text, 'name');
@@ -62,7 +62,7 @@ function main(){
 						select.onchange = function(){
 							if(document.getElementById("songs-div")){
 								var songsDiv = document.getElementById("songs-div");
-								songsDiv.parent.removeChild(artistSel);
+								songsDiv.parentNode.removeChild(songsDiv);
 							}
 							lookUp('artist','artist.getTopTracks&artist=', select.options[select.selectedIndex].text, 'name', 'url');
 							//set up background image
