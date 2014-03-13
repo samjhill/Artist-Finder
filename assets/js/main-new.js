@@ -22,7 +22,7 @@ function main(){
 	{
 		if( isLookUpComplete == true ){
 			//
-			//SELECT 1
+			//SELECT 1 - TAGS
 			//
 			//create a Select based on the tags we found
 			var newSelect = createSelect( tagsList );			
@@ -49,7 +49,7 @@ function main(){
 				{
 					if( isLookUpComplete == true ){
 						//
-						//SELECT 2
+						//SELECT 2 - ARTISTS
 						//
 						//create a Select based on the tags we found
 						var newSelect = createSelect( tagsList );			
@@ -65,8 +65,9 @@ function main(){
 								songsDiv.parentNode.removeChild(songsDiv);
 							}
 							lookUp('artist','artist.getTopTracks&artist=', select.options[select.selectedIndex].text, 'name', 'url');
+							
 							//set up background image
-							//setBackground(getArtistImage(select.options[select.selectedIndex].text));
+							setBackground(getArtistImage(select.options[select.selectedIndex].text));
 							
 							var waitForLookUp = setTimeout(function(){timerAjax()},1000);
 			
@@ -74,7 +75,7 @@ function main(){
 							{
 								if( isLookUpComplete == true ){
 									//
-									//SELECT 3
+									// LIST - SONGS
 									//
 									var newList = createList( tagsList );
 									document.body.appendChild(newList);
@@ -223,13 +224,14 @@ function createList( values ){
 }
 
 function getArtistImage( artistName ){
-	get(rootURL +  '?method=artist.getinfo&artist=' + artistName + '&api_key=' + api_key);
+	console.log('get artist image called');
+	lookUp( 'image', 'artist.search&artist=', artistName, '')
 	var wait = setInterval(function(){waitForAjax()},500);
 
 	function waitForAjax()
 	{
 		while( artistImageLoaded == false ){
-		var artistImages = response.getElementsByTagName( 'image' );
+		var artistImages = tagList.getElementsByTagName( 'image' );
 		var urlArray = new Array();
 		var containsMega = false;
 		
