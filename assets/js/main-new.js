@@ -39,7 +39,7 @@ function main(){
 				}
 				if(document.getElementById("songs-div")){
 					var songsDiv = document.getElementById("songs-div");
-					songsDiv.parentNode.removeChild(artistSel);
+					songsDiv.parentNode.removeChild(songsDiv);
 				}
 				
 				lookUp('artist','tag.getTopArtists&tag=', select.options[select.selectedIndex].text, 'name');
