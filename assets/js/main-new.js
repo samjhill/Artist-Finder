@@ -139,6 +139,7 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 				}
 				
 			}
+			
 			tagsList = array;
 			
 			
@@ -176,7 +177,7 @@ function createList( values ){
     
     
     
-    for( var i = 1; i < values.length; i = i + 2 ){
+    for( var i = 1; i < values.length; i = i + 4 ){
     	//create the list item	
 		var newListItem = document.createElement( 'li' );
 		
@@ -257,8 +258,4 @@ function setBackground( url ){
 	console.log('background set to ' + url);
 	document.body.style.backgroundImage = "url('" + url + "')"; //no-repeat center center fixed";
 	document.body.className += 'bgArtistImage';
-}
-
-function reset( index ){
-	console.log("reset called. Index: " + index);
 }
