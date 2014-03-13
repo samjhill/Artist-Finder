@@ -114,6 +114,7 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 			console.log(array);
 			tagsList = array;
 			
+			complete = false;
 			isLookUpComplete = true;
 			return tagsList;
 			
