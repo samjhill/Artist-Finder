@@ -32,7 +32,7 @@ function main(){
 			select = document.getElementById("tags-select");
 			//watch for change
 			select.onchange = function(){
-				lookUp('artist','tag.getTopArtists', select.options[select.selectedIndex].text, 'name');
+				lookUp('artist','tag.getTopArtists&tag=', select.options[select.selectedIndex].text, 'name');
 				var waitForLookUp = setTimeout(function(){timerAjax()},1000);
 
 				function timerAjax()
@@ -45,11 +45,15 @@ function main(){
 						var newSelect = createSelect( tagsList );			
 						//append it to the body
 						document.body.appendChild(newSelect);
+						
 						//look up the newly appended item
 						select = document.getElementById("artist-select");
 						//watch for change
 						select.onchange = function(){
-							lookUp('artist','artist.getTopTracks', select.options[select.selectedIndex].text, 'name');
+							lookUp('artist','artist.getTopTracks&artist=', select.options[select.selectedIndex].text, 'name');
+							//set up background image
+							setBackground(getArtistImage(select.options[select.selectedIndex].text));
+							
 							var waitForLookUp = setTimeout(function(){timerAjax()},1000);
 			
 							function timerAjax()
@@ -104,7 +108,7 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 		data = get(rootURL +  '?method='+ method + '&api_key=' + api_key);
 	}
 	else{
-		data = get(rootURL +  '?method='+ method + '&tag=' + searchValue + '&api_key=' + api_key);
+		data = get(rootURL +  '?method='+ method + searchValue + '&api_key=' + api_key);
 	}
 	    
 	var waitForAjax = setInterval(function(){timerAjax()},1000);
@@ -201,7 +205,7 @@ function createList( values ){
 }
 
 function getArtistImage( artistName ){
-	ajaxGet(rootURL +  '?method=artist.getinfo&artist=' + artistName + '&api_key=' + api_key);
+	get(rootURL +  '?method=artist.getinfo&artist=' + artistName + '&api_key=' + api_key);
 	var wait = setInterval(function(){waitForAjax()},500);
 
 	function waitForAjax()
