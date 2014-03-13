@@ -30,15 +30,19 @@ function main(){
 			select = document.getElementById("tags-select");
 			//watch for change
 			select.onchange = function(){
-				Console.log("onChange fired");
+				console.log("onChange fired");
 				lookUp('tag','tag.getTopArtists', select.options[select.selectedIndex].text, 'name');
 				var waitForLookUp = setTimeout(function(){timerAjax()},1000);
 
 				function timerAjax()
 				{
 					if( isLookUpComplete == true ){
-						Console.log("Lookup complete.");
-						Console.log(tagslist);
+						console.log("Lookup complete.");
+						console.log(tagslist);
+						//create a Select based on the tags we found
+						var newSelect = createSelect( tagsList );			
+						//append it to the body
+						document.body.appendChild(newSelect);
 					}
 				}
 			};
