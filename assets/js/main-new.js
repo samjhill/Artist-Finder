@@ -123,7 +123,7 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 			
 			//if tag2 exists, time to process it
 			//currently used for URLs for each song track
-			var names2;
+			var names2 = null;
 			if(tagName2){
 				names2 = data.getElementsByTagName( tagName2 );
 			}
@@ -134,7 +134,9 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 			array.push( label );
 			for(var i = 0; i < 15; i++){
 				array.push( names[i].textContent );
-				array.push( names2[i].textContent );
+				if(names2 != null){
+					array.push( names2[i].textContent );
+				}
 				
 			}
 			tagsList = array;
