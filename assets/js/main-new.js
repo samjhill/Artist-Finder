@@ -225,14 +225,14 @@ function createList( values ){
 }
 
 function getArtistImage( artistName ){
-	console.log('get artist image called' + artistName);
-	lookUp( 'image', 'artist.search&artist=', artistName, '')
+	console.log('get artist image called ' + artistName);
+	var response = get(rootURL +  '?method=artist.getinfo&artist=' + artistName + '&api_key=' + api_key);
 	var wait = setInterval(function(){waitForAjax()},200);
 
 	function waitForAjax()
 	{
 		while( artistImageLoaded == false ){
-		var artistImages = tagsList.getElementsByTagName( 'image' );
+		var artistImages = response.getElementsByTagName( 'image' );
 		var urlArray = new Array();
 		var containsMega = false;
 		
