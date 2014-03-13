@@ -29,8 +29,21 @@ function main(){
 			//look up the newly appended item
 			select = document.getElementById("tags-select");
 			//watch for change
-			select.onChange = lookUp('tag','tag.getTopArtists', select.options[select.selectedIndex].text, 'name');
-			console.log(tagsList);
+			select.onChange = function(){
+				Console.log("onChange fired");
+				lookUp('tag','tag.getTopArtists', select.options[select.selectedIndex].text, 'name');
+				var waitForLookUp = setTimeout(function(){timerAjax()},1000);
+
+				function timerAjax()
+				{
+					if( isLookUpComplete == true ){
+						Console.log("Lookup complete.");
+						Console.log(tagslist);
+					}
+				}
+			};
+			
+		
 		}
 	}
 	
@@ -65,7 +78,7 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 		data = get(rootURL +  '?method='+ method + '&api_key=' + api_key);
 	}
 	else{
-		data = get(rootURL +  '?method='+ method + searchValue + '&api_key=' + api_key);
+		data = get(rootURL +  '?method='+ method + '&tag=' + searchValue + '&api_key=' + api_key);
 	}
 	    
 	var waitForAjax = setInterval(function(){timerAjax()},1000);
