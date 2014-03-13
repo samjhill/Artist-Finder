@@ -53,7 +53,7 @@ function main(){
 						select.onchange = function(){
 							lookUp('artist','artist.getTopTracks&artist=', select.options[select.selectedIndex].text, 'name');
 							//set up background image
-							setBackground(getArtistImage(select.options[select.selectedIndex].text));
+							//setBackground(getArtistImage(select.options[select.selectedIndex].text));
 							
 							var waitForLookUp = setTimeout(function(){timerAjax()},1000);
 			
