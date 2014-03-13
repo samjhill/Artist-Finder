@@ -72,13 +72,14 @@ function main(){
 							function timerAjax()
 							{
 								if( isLookUpComplete == true ){
-									//set up background image
-									setBackground(getArtistImage(select.options[select.selectedIndex].text));
 									//
 									// LIST - SONGS
 									//
 									var newList = createList( tagsList );
 									document.body.appendChild(newList);
+									
+									//set up background image
+									setBackground(getArtistImage(select.options[select.selectedIndex].text));
 								}
 							}
 						}
