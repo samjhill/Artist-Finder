@@ -66,14 +66,14 @@ function main(){
 							}
 							lookUp('artist','artist.getTopTracks&artist=', select.options[select.selectedIndex].text, 'name', 'url');
 							
-							//set up background image
-							setBackground(getArtistImage(select.options[select.selectedIndex].text));
 							
 							var waitForLookUp = setTimeout(function(){timerAjax()},1000);
 			
 							function timerAjax()
 							{
 								if( isLookUpComplete == true ){
+									//set up background image
+									setBackground(getArtistImage(select.options[select.selectedIndex].text));
 									//
 									// LIST - SONGS
 									//
@@ -224,14 +224,14 @@ function createList( values ){
 }
 
 function getArtistImage( artistName ){
-	console.log('get artist image called');
+	console.log('get artist image called' + artistName);
 	lookUp( 'image', 'artist.search&artist=', artistName, '')
-	var wait = setInterval(function(){waitForAjax()},500);
+	var wait = setInterval(function(){waitForAjax()},200);
 
 	function waitForAjax()
 	{
 		while( artistImageLoaded == false ){
-		var artistImages = tagList.getElementsByTagName( 'image' );
+		var artistImages = tagsList.getElementsByTagName( 'image' );
 		var urlArray = new Array();
 		var containsMega = false;
 		
