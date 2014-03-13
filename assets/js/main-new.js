@@ -56,6 +56,7 @@ function main(){
 
 //basic GET call
 function get( url ){
+	complete = false;
 	  var xmlHttp = null;
 
     xmlHttp = new XMLHttpRequest();
@@ -113,7 +114,6 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 			console.log(array);
 			tagsList = array;
 			
-			complete = false;
 			isLookUpComplete = true;
 			return tagsList;
 			
