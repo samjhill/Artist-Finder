@@ -38,7 +38,7 @@ function main(){
 				{
 					if( isLookUpComplete == true ){
 						console.log("Lookup complete.");
-						console.log(tagslist);
+						console.log(tagsList);
 						//create a Select based on the tags we found
 						var newSelect = createSelect( tagsList );			
 						//append it to the body
