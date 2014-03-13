@@ -23,7 +23,8 @@ function main(){
 			console.log(tagsList);
 			//create a Select based on the tags we found
 			var newSelect = createSelect( tagsList );
-			newSelect.children[0].setAttribute("onchange", lookUp('tag','tag.getTopArtists', newSelect.children[0].options[newSelect.selectedIndex].text));
+			
+			newSelect.children[0].setAttribute("onchange", lookUp('tag','tag.getTopArtists', newSelect.children[0].options[newSelect.children[0].selectedIndex].text));
 			console.log(newSelect);
 			
 			//append it to the body
