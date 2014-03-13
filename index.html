@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/main.css" type="text/css">
  </head>
 
- <body onLoad="populate();">
+ <body onLoad="main();">
 	<div id="header">
           <h1>Artist Finder</h1>
           <h3>Finds music you'll like based on your choices.</h3>
@@ -26,26 +26,6 @@
    <div id="footer">
      <p>Uses the <a href="http://www.last.fm">Last.fm</a> API. Written by <a href="http://www.samjhill.com">Sam Hill</a> 2014.</p>
    </div>
-  <script type="text/javascript">
-   function autorun()
-   {
-		
-		var api_key = 'f63ef15c14a30593c4dabb929a422329';
-		var authURL = 'http://www.last.fm/api/auth/?api_key=';
-		var rootURL = 'http://ws.audioscrobbler.com/2.0/';
-		
-		main();
-		// get list of top tags
-		//var selectDiv = ajaxParse( 'tags', 'tag.getTopTags', '', 'name' );
-		
-		
-			    
-	     
-   }
-   if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
-   else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
-   else window.onload = autorun;
-  </script>
   
   <script type="text/javascript" src="assets/js/main-new.js"></script>
   

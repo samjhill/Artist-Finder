@@ -107,7 +107,7 @@ function createSelect( values ){
 	
 	
 	var newSelect = document.createElement( 'select' );
-	for(int i = 0; i < values.length; i++){
+	for(var i = 0; i < values.length; i++){
 	var option = document.createElement( 'option' );
  					option.value = values[i];
  					option.text = values[i];
