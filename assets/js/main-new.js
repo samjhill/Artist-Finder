@@ -33,6 +33,15 @@ function main(){
 			select = document.getElementById("tags-select");
 			//watch for change
 			select.onchange = function(){
+				if(document.getElementById("artist-select")){
+					var artistSel = document.getElementById("artist-select");
+					artistSel.parent.removeChild(artistSel);
+				}
+				if(document.getElementById("songs-div")){
+					var songsDiv = document.getElementById("songs-div");
+					songsDiv.parent.removeChild(artistSel);
+				}
+				
 				lookUp('artist','tag.getTopArtists&tag=', select.options[select.selectedIndex].text, 'name');
 				var waitForLookUp = setTimeout(function(){timerAjax()},1000);
 
@@ -51,6 +60,10 @@ function main(){
 						select = document.getElementById("artist-select");
 						//watch for change
 						select.onchange = function(){
+							if(document.getElementById("songs-div")){
+								var songsDiv = document.getElementById("songs-div");
+								songsDiv.parent.removeChild(artistSel);
+							}
 							lookUp('artist','artist.getTopTracks&artist=', select.options[select.selectedIndex].text, 'name', 'url');
 							//set up background image
 							//setBackground(getArtistImage(select.options[select.selectedIndex].text));
