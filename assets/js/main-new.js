@@ -22,13 +22,15 @@ function main(){
 		if( isLookUpComplete == true ){
 			console.log(tagsList);
 			//create a Select based on the tags we found
-			var newSelect = createSelect( tagsList );
-			
-			newSelect.setAttribute("onchange", "lookUp('tag','tag.getTopArtists', newSelect.options[newSelect.selectedIndex].text)");
-			console.log(newSelect);
-			
+			var newSelect = createSelect( tagsList );			
 			//append it to the body
 			document.body.appendChild(newSelect);
+			
+			//look up the newly appended item
+			select = document.getElementById("tags-select");
+			//watch for change
+			select.onChange = lookUp('tag','tag.getTopArtists', select.options[select.selectedIndex].text, 'name');
+			console.log(tagsList);
 		}
 	}
 	
