@@ -95,6 +95,7 @@ function get( url ){
 //
 // goes out to Last.fm with a request, then returns an array containing the specified information
 function lookUp( label, method, searchValue, tagName, tagName2){
+	complete = false;
 	var data = null;
 	tagsList = (['zero'],['one'],['two']);
 	isLookUpComplete = false;
@@ -134,7 +135,6 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 			
 			
 			isLookUpComplete = true;
-			complete = false;
 			return tagsList;
 			
 		}
