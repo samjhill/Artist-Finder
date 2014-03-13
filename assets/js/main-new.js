@@ -62,6 +62,7 @@ function main(){
 									document.body.appendChild(newList);
 								}
 							}
+						}
 					}
 				}
 			};
