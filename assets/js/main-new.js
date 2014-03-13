@@ -110,7 +110,6 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 
 	function timerAjax()
 	{
-		//console.log('complete is now false, waiting...');
 		if(complete == true){
 			//sort through all the tags, grab them by name
 			console.log('complete is now true; lets grab them by tagName');
@@ -135,6 +134,7 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 			
 			
 			isLookUpComplete = true;
+			complete = false;
 			return tagsList;
 			
 		}
