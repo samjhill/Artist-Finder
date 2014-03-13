@@ -15,15 +15,15 @@ function main(){
 	//first, let's find the most popular tags
 	lookUp( 'tags', 'tag.getTopTags', '', 'name' );
 	
-	var waitForLookUp = setTimeout(function(){timerAjax()},2000);
+	var waitForLookUp = setTimeout(function(){timerAjax()},1000);
 
 	function timerAjax()
 	{
 		if( isLookUpComplete == true ){
 			console.log(tagsList);
 			//create a Select based on the tags we found
-			//select creation from here forward is handled inside createSelect, recursively
 			var newSelect = createSelect( tagsList );
+			newSelect.children[0].setAttribute("onchange", lookUp('tag','tag.getTopArtists', newSelect.children[0].options[newSelect.selectedIndex].text));
 			console.log(newSelect);
 			
 			//append it to the body
@@ -108,7 +108,6 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 function createSelect( values ){
 	var newSelect = document.createElement( 'select' );
 	//add onChange function
-	newSelect.onChange = reset();
 	for(var i = 0; i < values.length; i++){
 	var option = document.createElement( 'option' );
  					option.value = values[i];
