@@ -106,14 +106,14 @@ function main(){
 									// LIST - SONGS
 									//
 									var newList = createList( tagsList );
-									document.getElementById("artists-list").innerHTML = createArtistList();
+									document.body.appendChild(newList);
 									
 									//set up background image
 									setBackground(getArtistImage(select.options[select.selectedIndex].text));
-									//create a list of previously found artists
-									var artistList = createArtistList( );			
+									
+									//create a list of previously found artists		
 									//append it to the body
-									document.body.appendChild(artistList);
+									document.getElementById("artists-list").innerHTML = createArtistList();
 								}
 							}
 						}
