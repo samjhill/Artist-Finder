@@ -2,9 +2,10 @@
     $name = $_POST['name'];
     $email = $_POST['email'];
     $comment = $_POST['comment'];
+    
     $from = 'From: ArtistFinder'; 
     $to = 'samuhill@gmail.com'; 
-    $subject = "$_POST['name'] contacted you through ArtistFinder.";
+    $subject = "Contacting you through ArtistFinder";
 
     $body = "$name\n Comment:\n $comment\n From: $email";
     
@@ -12,9 +13,9 @@
        if (mail ($to, $subject, $body, $from)) { 
 	   echo '<p>Thanks for the comments!</p>';
        } else { 
-	   echo '<p>Something is messed up. <a href="comment.php">Go back.</a></p>'; 
+	   echo '<p>Something is messed up. <a href="index.php">Go back.</a></p>'; 
+	}
     }
-}
 ?>
 
 <!DOCTYPE html>
