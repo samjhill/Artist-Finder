@@ -3,7 +3,8 @@ body{
     color: white;
     padding: 1em;
     margin: 1em;
-	background: #333;
+    background: #333;
+    
 }
 
 a, a:hover{
@@ -62,8 +63,17 @@ li{
 }
 
 .bgArtistImage{
-	-webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    opacity: 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear;
+    -o-transition: background 0.5s linear;
+    transition: background 0.5s linear;
+}
+
+.bgAritistImage:hover{
+    opacity: 1;
 }
