@@ -208,8 +208,7 @@ function createArtistList(){
 	var artistsArray = artists.split(',');
 	//var count =
 	for(var i = 0; i < artistsArray; i++){
-		newP.innerHTML += artistsArray[i];
-		newP.innerHTML += document.createElement("br");
+		newP.innerHTML = artistsArray[i];
 	}
 	return newP.innerHTML;
 }
