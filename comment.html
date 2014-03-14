@@ -5,7 +5,7 @@
 <!--[if gte IE 9]><!--><html><!--<![endif]-->
  <head>
   <meta charset="UTF-8">
-  <title>Client-side programming: Project 1</title>
+  <title>Comments: Client-side programming: Project 1</title>
   <meta name="author" content="Samuel Hill">
   <meta name="description" content="artist finder - finds music you like based on your choices.">
   <link rel="shortcut icon" href="favicon.ico" type="img/favicon.ico">
@@ -14,22 +14,24 @@
   
  </head>
 
- <body onLoad="main();">
+ <body">
 	<div id="header">
-          <h1>Artist Finder</h1>
-          <h3>Finds music you'll like based on your choices.</h3>
+          <h1>Artist Finder - Comments</h1>
+          <h3>Send me a comment!</h3>
         </div>
-	
-	<div id="artists-list">
-	      
-	</div>
+       
        
        <div id="main">
-        
+	      <form id="comment-form" method="post">
+		     <label for="name">Name<input type="text" name="name" id="name" /></label>
+		     <label for="email">Email<input type="email" name="email" id="email" /></label>
+		     <label for="comment">Comment<textarea name="comment" id="comment"></textarea></label>
+		     <input type="submit" value="submit" />
+	      </form>
        </div>
    
    <div id="footer">
-     <p><a href="comment.html">Comment.</a> Uses the <a href="http://www.last.fm">Last.fm</a> API. Written by <a href="http://www.samjhill.com">Sam Hill</a> 2014.</p>
+     <p>Uses the <a href="http://www.last.fm">Last.fm</a> API. Written by <a href="http://www.samjhill.com">Sam Hill</a> 2014.</p>
    </div>
   
   <script type="text/javascript" src="assets/js/main-new.js"></script>

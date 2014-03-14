@@ -321,4 +321,3 @@ function setBackground( url ){
 	document.body.style.backgroundImage = "url('" + url + "')"; //no-repeat center center fixed";
 	document.body.className += 'bgArtistImage';
 }
-
