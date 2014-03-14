@@ -76,6 +76,7 @@ function main(){
 						//
 						//SELECT 2 - ARTISTS
 						//
+						document.body.appendChild(document.createElement( "br" ));
 						//create a Select based on the tags we found
 						var newSelect = createSelect( tagsList );			
 						//append it to the body
@@ -204,8 +205,12 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 function createArtistList(){
 	var newP = document.createElement( 'p' );
 	var artists = localStorage.artists;
+	var artistsArray = string.split(',')
 	//var count =
-	newP.innerHTML = artists;
+	for(var i = 0; i < artistsArray; i++){
+		newP.innerHTML += artistsArray[i];
+		newP.innerHTML += document.createElement("br");
+	}
 	return newP.innerHTML;
 }
 
