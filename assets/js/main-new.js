@@ -28,7 +28,7 @@ function main(){
 		}());
 	
 	if (storage) {
-	  localStorage.setItem("favArtists", "no favorite artists yet");
+	  localStorage.artists = "";
 	}
 	else{
 		 //redirect user to a new browser
@@ -73,10 +73,6 @@ function main(){
 				function timerAjax()
 				{
 					if( isLookUpComplete == true ){
-						//add the artist to favorite artists
-						if (storage) {
-						  localStorage.artists += select.options[select.selectedIndex].text;
-						}
 						
 						//
 						//SELECT 2 - ARTISTS
@@ -96,7 +92,10 @@ function main(){
 							}
 							lookUp('artist','artist.getTopTracks&artist=', select.options[select.selectedIndex].text, 'name', 'url');
 							
-							
+							//add the artist to favorite artists
+							if (storage) {
+							  localStorage.artists = select.options[select.selectedIndex].text;
+							}
 							var waitForLookUp = setTimeout(function(){timerAjax()},1000);
 			
 							function timerAjax()
