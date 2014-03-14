@@ -4,15 +4,15 @@
     $comment = $_POST['comment'];
     $from = 'From: ArtistFinder'; 
     $to = 'samuhill@gmail.com'; 
-    $subject = $_POST['name'] . 'contacted you through ArtistFinder.';
+    $subject = "$_POST['name'] contacted you through ArtistFinder.";
 
-    $body = "$name\n Comment:\n $comment \n From: $email";
+    $body = "$name\n Comment:\n $comment\n From: $email";
     
     if ($_POST['submit']) {
-    if (mail ($to, $subject, $body, $from)) { 
-        echo '<p>Thanks for the comments!</p>';
-    } else { 
-        echo '<p>Something's messed up. <a href="comments.html">Go back.</a></p>'; 
+       if (mail ($to, $subject, $body, $from)) { 
+	   echo '<p>Thanks for the comments!</p>';
+       } else { 
+	   echo '<p>Something's messed up. <a href="comment.php">Go back.</a></p>'; 
     }
 }
 ?>
@@ -42,7 +42,7 @@
        
        
        <div id="main">
-	      <form id="comment-form" onsubmit="validate(new Array(['name'],['email'],['comment']));" method="post" action="comment.html">
+	      <form id="comment-form" onsubmit="validate(new Array(['name'],['email'],['comment']));" method="post" action="comment.php">
 		     <label for="name">Name<input type="text" name="name" id="name" /></label>
 		     <label for="email">Email<input type="email" name="email" id="email" /></label>
 		     <label for="comment">Comment<textarea name="comment" id="comment"></textarea></label>
