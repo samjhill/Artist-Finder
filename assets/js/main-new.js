@@ -305,4 +305,3 @@ function setBackground( url ){
 	document.body.className += 'bgArtistImage';
 }
 
-function showComments
