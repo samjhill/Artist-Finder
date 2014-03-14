@@ -93,7 +93,7 @@ function main(){
 							
 							//add the artist to favorite artists
 							if (storage) {
-							  localStorage.artists += select.options[select.selectedIndex].text;
+							  localStorage.artists += ' ' + select.options[select.selectedIndex].text;
 							}
 							var waitForLookUp = setTimeout(function(){timerAjax()},1000);
 			
