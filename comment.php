@@ -12,7 +12,7 @@
        if (mail ($to, $subject, $body, $from)) { 
 	   echo '<p>Thanks for the comments!</p>';
        } else { 
-	   echo '<p>Something's messed up. <a href="comment.php">Go back.</a></p>'; 
+	   echo '<p>Something is messed up. <a href="comment.php">Go back.</a></p>'; 
     }
 }
 ?>
