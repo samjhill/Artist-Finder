@@ -37,6 +37,8 @@ li{
 
 #artists-list{
     float: right;
+    text-shadow: 2px 3px 8px #333;
+    width: 20%;
 }
 
 /* IE 6 */
