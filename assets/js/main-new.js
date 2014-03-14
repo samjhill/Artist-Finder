@@ -65,10 +65,7 @@ function main(){
 					songsDiv.parentNode.removeChild(songsDiv);
 				}
 				
-				//add the artist to favorite artists
-				if (storage) {
-				  localStorage.favArtists += select.options[select.selectedIndex].text;
-				}
+				
 				//look up info for next select creation
 				lookUp('artist','tag.getTopArtists&tag=', select.options[select.selectedIndex].text, 'name');
 				var waitForLookUp = setTimeout(function(){timerAjax()},1000);
@@ -76,6 +73,11 @@ function main(){
 				function timerAjax()
 				{
 					if( isLookUpComplete == true ){
+						//add the artist to favorite artists
+						if (storage) {
+						  localStorage.artists += select.options[select.selectedIndex].text;
+						}
+						
 						//
 						//SELECT 2 - ARTISTS
 						//
