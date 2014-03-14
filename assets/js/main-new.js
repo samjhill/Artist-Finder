@@ -66,7 +66,7 @@ function main(){
 				}
 				
 				//add the artist to favorite artists
-				if (hasStorage) {
+				if (storage) {
 				  localStorage.favArtists += select.options[select.selectedIndex].text;
 				}
 				//look up info for next select creation
