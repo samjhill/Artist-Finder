@@ -35,6 +35,10 @@ li{
    width:100%;
 }
 
+#artists-list{
+    float: right;
+}
+
 /* IE 6 */
 * html #footer {
    position:absolute;

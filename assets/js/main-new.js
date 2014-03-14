@@ -106,7 +106,7 @@ function main(){
 									// LIST - SONGS
 									//
 									var newList = createList( tagsList );
-									document.body.appendChild(newList);
+									document.getElementById("artists-list").innerHTML = createArtistList();
 									
 									//set up background image
 									setBackground(getArtistImage(select.options[select.selectedIndex].text));
@@ -200,12 +200,13 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 	
 }
 
+//add artist to artist-list from local storage
 function createArtistList(){
-	var newDiv = document.createElement( 'div' );
+	var newP = document.createElement( 'p' );
 	var artists = localStorage.artists;
 	//var count =
-	newDiv.innerHTML = artists;
-	return newDiv;
+	newP.innerHTML = artists;
+	return newP;
 }
 
 // @@values - Array - this will be used for each Option
