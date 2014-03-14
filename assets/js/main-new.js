@@ -27,7 +27,7 @@ function main(){
 		  } catch(e) {}
 		}());
 	
-	if (hasStorage) {
+	if (storage) {
 	  localStorage.setItem("favArtists", "no favorite artists yet");
 	}
 	else{
