@@ -114,7 +114,7 @@ function main(){
 									
 									//create a list of previously found artists		
 									//append it to the body
-									document.getElementById("artists-list").innerHTML = createArtistList();
+									document.getElementById("artists-list").appendChild( createArtistList()) ;
 								}
 							}
 						}
