@@ -206,7 +206,7 @@ function createArtistList(){
 	var artists = localStorage.artists;
 	//var count =
 	newP.innerHTML = artists;
-	return newP;
+	return newP.innerHTML;
 }
 
 // @@values - Array - this will be used for each Option
