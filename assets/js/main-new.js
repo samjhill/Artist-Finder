@@ -226,6 +226,7 @@ function createList( values ){
 
 function getArtistImage( artistName ){
 	console.log('get artist image called ' + artistName);
+	artistImageLoaded = false;
 	var response = get(rootURL +  '?method=artist.getinfo&artist=' + artistName + '&api_key=' + api_key);
 	var wait = setInterval(function(){waitForAjax()},200);
 
