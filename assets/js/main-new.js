@@ -14,17 +14,27 @@ var artistImageLoaded = false;
 var favArtistsArray = (['no artists yet']);
 
 function main(){
-	if(typeof(Storage)!=="undefined")
-	  {
-	 	 // initialize local storage stuff
-	  	//localStorage.setItem("favArtists", favArtistsArray);	  
-	  }
-	else
-	  {
-	    //redirect user to a new browser
+	//local storage detection courtesy of http://mathiasbynens.be/notes/localstorage-pattern
+	// Feature detect + local reference
+	var storage = (function() {
+		  var uid = new Date,
+			  result;
+		  try {
+			localStorage.setItem(uid, uid);
+			result = localStorage.getItem(uid) == uid;
+			localStorage.removeItem(uid);
+			return result && localStorage;
+		  } catch(e) {}
+		}());
+	
+	if (hasStorage) {
+	  localStorage.setItem("favArtists", "no favorite artists yet");
+	}
+	else{
+		 //redirect user to a new browser
 	    alert("Your current internet browser isn't supported. Try again with a new browser!");
 	  	window.location = "https://www.google.com/intl/en/chrome/browser/";
-	  }
+	}
 	  
 	//first, let's find the most popular tags
 	lookUp( 'tags', 'tag.getTopTags', '', 'name' );
@@ -56,7 +66,9 @@ function main(){
 				}
 				
 				//add the artist to favorite artists
-				favArtistsArray.push(select.options[select.selectedIndex].text);
+				if (hasStorage) {
+				  localStorage.favArtists += select.options[select.selectedIndex].text;
+				}
 				//look up info for next select creation
 				lookUp('artist','tag.getTopArtists&tag=', select.options[select.selectedIndex].text, 'name');
 				var waitForLookUp = setTimeout(function(){timerAjax()},1000);
