@@ -93,8 +93,10 @@ function main(){
 							
 							//add the artist to favorite artists
 							if (storage) {
-							  localStorage.artists += ' ' + select.options[select.selectedIndex].text;
+							  localStorage.artists += ', ' + select.options[select.selectedIndex].text;
 							}
+							
+							
 							var waitForLookUp = setTimeout(function(){timerAjax()},1000);
 			
 							function timerAjax()
@@ -108,6 +110,10 @@ function main(){
 									
 									//set up background image
 									setBackground(getArtistImage(select.options[select.selectedIndex].text));
+									//create a list of previously found artists
+									var artistList = createArtistList( );			
+									//append it to the body
+									document.body.appendChild(artistList);
 								}
 							}
 						}
@@ -191,6 +197,15 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 			
 		}
 	}
+	
+}
+
+function createArtistList(){
+	var newDiv = document.createElement( 'div' );
+	var artists = localStorage.artists;
+	//var count =
+	newDiv.innerHTML = artists;
+	return newDiv;
 }
 
 // @@values - Array - this will be used for each Option
@@ -210,7 +225,6 @@ function createSelect( values ){
  	
 	return newSelect;
 }
-
 
 // returns an Unordered List element. Inside are List Items with given values for each.
 //@@values - Array where values[0] is the track name and values[1] is the URL
