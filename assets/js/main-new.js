@@ -17,7 +17,7 @@ function main(){
 	if(typeof(Storage)!=="undefined")
 	  {
 	 	 // initialize local storage stuff
-	  	localStorage.setItem("favArtists", favArtistsArray);	  
+	  	//localStorage.setItem("favArtists", favArtistsArray);	  
 	  }
 	else
 	  {
