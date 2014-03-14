@@ -9,7 +9,7 @@
 
     $body = "$name\n Comment:\n $comment\n From: $email";
     
-    if ($_POST['submit']) {
+    if (isset($_POST['submit'])) {
        if (mail ($to, $subject, $body, $from)) { 
 	   echo '<p>Thanks for the comments!</p>';
        } else { 
@@ -43,7 +43,7 @@
        
        
        <div id="main">
-	      <form id="comment-form" onsubmit="validate(new Array(['name'],['email'],['comment']));" method="post" action="comment.php">
+	      <form id="comment-form" onsubmit="validate(['name'],['email'],['comment']);" method="post" action="comment.php">
 		     <label for="name">Name<input type="text" name="name" id="name" /></label>
 		     <label for="email">Email<input type="email" name="email" id="email" /></label>
 		     <label for="comment">Comment<textarea name="comment" id="comment"></textarea></label>
