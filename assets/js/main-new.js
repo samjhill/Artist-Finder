@@ -205,7 +205,7 @@ function lookUp( label, method, searchValue, tagName, tagName2){
 function createArtistList(){
 	var newP = document.createElement( 'p' );
 	var artists = localStorage.artists;
-	var artistsArray = string.split(',')
+	var artistsArray = artists.split(',');
 	//var count =
 	for(var i = 0; i < artistsArray; i++){
 		newP.innerHTML += artistsArray[i];
