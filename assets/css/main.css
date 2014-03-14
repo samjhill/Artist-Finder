@@ -28,12 +28,20 @@ li{
 	text-shadow: 2px 3px 8px #333;
 }
 
+input{
+    margin: .5em;
+}
+
 #footer {   
    position:fixed;
    left: 1em;
    bottom:0px;
    height:30px;
    width:100%;
+}
+
+#comment-form{
+    width: 200px;
 }
 
 #artists-list{
