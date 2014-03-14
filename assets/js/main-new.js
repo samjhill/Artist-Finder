@@ -11,7 +11,6 @@ var complete = false;
 var tagsList = (['zero'],['one'],['two']);
 var isLookUpComplete = false;
 var artistImageLoaded = false;
-var favArtistsArray = (['no artists yet']);
 
 function main(){
 	//local storage detection courtesy of http://mathiasbynens.be/notes/localstorage-pattern
@@ -94,7 +93,7 @@ function main(){
 							
 							//add the artist to favorite artists
 							if (storage) {
-							  localStorage.artists = select.options[select.selectedIndex].text;
+							  localStorage.artists += select.options[select.selectedIndex].text;
 							}
 							var waitForLookUp = setTimeout(function(){timerAjax()},1000);
 			
